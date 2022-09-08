@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static "css/base_f.css" %}">
+    <link rel="stylesheet" href="{% static "css/fbase.css" %}">
 
     {% block head %} {% endblock %}
 
@@ -15,11 +15,30 @@
 
     <header>
 
+      <div class="all_header_menu">
+
+        <img src="{% static "images/newspaper_right.png" %}" class="header_img">
+
+        <b>Веб-Газета</b>
+
+      <p>
+        Прямиком из будущего!
+      </p>
+
+    </div>
+
     </header>
 
     {% block content %} {% endblock %}
 
     <footer>
+
+      <div class="footer__body">
+
+        <a>Созданно учащимеся 10В класса</a>
+        <a>В 2022 году.</a>
+
+      </div>
 
     </footer>
 
