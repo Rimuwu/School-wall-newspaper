@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static "css/fbase.css" %}">
+    <link rel="stylesheet" href="{% static "css/basef.css" %}">
 
     {% block head %} {% endblock %}
 
@@ -17,21 +17,28 @@
 
       <div class="all_header_menu">
 
-        <img src="{% static "images/newspaper_right.png" %}" class="header_img">
+        <div class="logo">
 
-        <b>Веб-Газета</b>
+          <h2><a href="/">Paper</a></h2>
 
-      <p>
-        Прямиком из будущего!
-      </p>
+        </div>
 
-    </div>
+      </div>
+
+      <ul class="down_menu">
+
+        <li><a href="#">Подписаться</a></li>
+
+        <li><a href="#">О нас</a></li>
+
+      </ul>
+
 
     </header>
 
     {% block content %} {% endblock %}
 
-    <footer>
+    <!-- <footer>
 
       <div class="footer__body">
 
@@ -40,7 +47,7 @@
 
       </div>
 
-    </footer>
+    </footer> -->
 
   </body>
 </html>
