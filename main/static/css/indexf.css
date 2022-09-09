@@ -6,10 +6,72 @@
 }
 
 @font-face {
-  font-family: "Comic Sans MS";
-  src: url(Comic Sans MS.ttf);
+  font-family: "ChareInk Italic";
+  src: url(ChareInk-Italic.ttf);
+}
+
+@font-face {
+  font-family: "ChareInk Regular";
+  src: url(ChareInk-Regular.ttf);
 }
 
 html, body {
   height: 100%;
+}
+
+.longer_post{
+
+  background-color: rgb(43, 45, 60);
+  border-radius: 5px;
+  padding: 5%;
+}
+
+.longer_post_title{
+  width: 35%;
+  font-size: 20px;
+}
+
+.longer_post_content{
+  width: 45%;
+}
+
+.longer_post h1{
+  color: white;
+  font-style: italic;
+  font-family: "ChareInk Italic", sans-serif;
+
+}
+
+.longer_post p{
+  color: white;
+  font-family: "ChareInk Regular", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+
+  padding-top: 10px;
+
+}
+
+@media screen and (max-width: 988px) {
+
+  .longer_post_content{
+    width: 55%;
+  }
+
+  .longer_post_title{
+    width: 75%;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  .longer_post_content{
+    width: 100%;
+  }
+
+  .longer_post_title{
+    width: 100%;
+  }
+
 }
