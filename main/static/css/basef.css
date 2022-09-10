@@ -28,58 +28,6 @@ html, body {
   padding: 0 3.5%;
 }
 
-header{
-}
-
-.all_header_menu{
-
-  border-bottom: 1.2px solid rgba(0, 0, 0, 0.25);
-  line-height: 1.5;
-
-}
-
-.logo{
-  font-family: "ChareInk Bold", sans-serif;
-  font-size: 25px;
-  text-align: center;
-}
-
-.logo a:hover{
-  color: black;
-  text-decoration: none;
-}
-
-.logo a{
-  color: black;
-}
-
-.down_menu{
-  justify-content: center;
-  vertical-align: middle;
-  display: flex;
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-.down_menu li{
-  display:inline-block;
-  padding: 15px;
-  padding-top: 2px;
-
-}
-
-.down_menu a{
-  color: rgb(82, 82, 82);
-  font-family: "Comic Sans MS", sans-serif;
-
-  padding-bottom: 5px;
-}
-
-
 @media screen and (max-width: 768px) {
-
-  html, body {
-    padding: 0 1%;
-  }
 
 }
