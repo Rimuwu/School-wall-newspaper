@@ -6,7 +6,7 @@
 
     <meta charset="utf-8">
     <title>{% block title %} {% endblock %}</title>
-    <link rel="stylesheet" href="{% static "css/basef.css" %}">
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
 
     {% block head %} {% endblock %}
 
@@ -15,14 +15,37 @@
 
     <header>
 
+      <div class="header_menu">
 
+        <div class="bottom_all_releases">
+
+          <p>
+            Все выпуски
+          </p>
+
+        </div>
+
+        <div class="header_logo">
+
+          <img src="{% static "images/logo.png" %}">
+
+          <p>
+            Официальное медиа<br>
+            школы 1506
+          </p>
+
+        </div>
+
+      </div>
+
+    {% block release %} {% endblock %}
 
     </header>
 
     {% block content %} {% endblock %}
 
     <footer>
-      
+
     </footer>
 
   </body>
