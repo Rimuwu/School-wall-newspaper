@@ -6,49 +6,47 @@
 }
 
 @font-face {
-  font-family: "ChareInk Bold";
-  src: url(ChareInk-Bold.ttf);
+  font-family: "Inter-Black";
+  src: url(Inter-Black.otf);
 }
 
 @font-face {
-  font-family: "Comic Sans MS";
-  src: url(Comic Sans MS.ttf);
-}
-
-@font-face {
-  font-family: "ChareInk Regular";
-  src: url(ChareInk-Regular.ttf);
+  font-family: "Inter-Regular";
+  src: url(Inter-Regular.otf);
 }
 
 html, body {
 }
 
 header{
-  background: linear-gradient(90deg, rgba(255, 199, 0, 0.5) 0%, rgba(255, 122, 0, 0.5) 100%);
+  background: linear-gradient(90deg, rgba(255, 199, 0, 0.7) 0%, rgba(255, 122, 0, 0.6) 100%);
   width: 100%;
   height: auto;
 
-  padding-bottom: 25px
+  padding-bottom: 25px;
+  margin-bottom: 35px;
 }
 
 .header_menu{
   width: 100%;
   padding: 10px;
   padding-right: 15px;
+  padding-bottom: 50px
 }
 
 .header_logo img{
   width: 150px;
   height: 50px;
+  float: left;
 }
 
 .header_logo p{
   display: inline-block;
-  position: absolute;
   padding-top: 8px;
   padding-left: 10px;
+  float: left;
 
-  font-family: "ChareInk Bold", sans-serif;
+  font-family: "Inter-Regular", sans-serif;
   font-size: 15px;
 }
 
@@ -62,10 +60,44 @@ header{
 
 .bottom_all_releases p{
 
-  font-family: "ChareInk Bold", sans-serif;
+  font-family: "Inter-Black", sans-serif;
   font-size: 20px
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 980px) and (max-height: 2000px ) {
+
+  .header_logo img{
+    width: 225px;
+    height: 75px;
+  }
+
+  .header_logo p{
+    font-size: 25px;
+  }
+
+  .bottom_all_releases p{
+    font-size: 35px
+  }
+
+  .header_menu{
+    padding-bottom: 150px;
+  }
+
+}
+
+@media screen and (max-width: 760px) {
+
+  .header_logo img{
+    width: 150px;
+    height: 50px;
+  }
+
+  .header_logo p{
+    font-size: 15px;
+  }
+
+  .bottom_all_releases p{
+    font-size: 20px
+  }
 
 }
