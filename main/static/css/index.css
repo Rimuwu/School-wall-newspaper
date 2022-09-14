@@ -20,7 +20,7 @@ html, body {
 }
 
 .release{
-  padding-left: 15px;
+  padding-left: 20px;
   padding-top: 65px;
 }
 .release_title{
@@ -94,6 +94,30 @@ html, body {
 
 .first_post_content{
   width: 1180px;
+
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.first_post_content a{
+  text-decoration: none;
+  color: black;
+}
+
+.first_post_content a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.first_post_content a:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.first_post_content a:active {
+  text-decoration: none;
+  color: black;
 }
 
 .first_post_image img{
