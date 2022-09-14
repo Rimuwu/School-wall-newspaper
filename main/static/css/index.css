@@ -59,7 +59,7 @@ html, body {
 .editor_words{
   float: right;
   padding-right: 95px;
-  padding-bottom: 25px;
+  padding-bottom: 45px;
 }
 
 .editor_words_content{
@@ -68,7 +68,6 @@ html, body {
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 5px;
   padding: 15px;
-
 }
 
 .editor_words_title h1{
@@ -95,26 +94,30 @@ html, body {
 
 .first_post_content{
   width: 1180px;
-  background-color: blue;
 }
 
 .first_post_image img{
-  width: 100%
+  width: 100%;
+  border-radius: 10px;
 }
 
 .first_post_title{
   font-family: "Inter-Black", sans-serif;
   font-size: 25px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
+  line-height: 0.8;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .first_post_text{
   font-family: "Inter-Regular", sans-serif;
-  font-size: 30px;
-  padding-left: 15px;
+  font-size: 20px;
+  /* padding-left: 15px; */
 }
 
-@media screen and (max-width: 988px) {
+@media screen and (max-width: 1800px) {
 
   .release_content{
     width: 650px;
@@ -125,12 +128,30 @@ html, body {
     padding-right: 0;
     display: flex;
     justify-content: center;
-
   }
 
   .editor_words_content{
     width: 80%
   }
+
+  .first_post_content{
+    width: 80%;
+  }
+
+  .first_post{
+    float: none;
+    padding-right: 0;
+    padding-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (max-width: 988px) {
+
+
+
 }
 
 @media screen and (max-width: 768px) {
