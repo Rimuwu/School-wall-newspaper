@@ -60,24 +60,23 @@ header{
   border-radius: 10px;
 }
 
-.bottom_all_releases a{
+a{
+  text-decoration: none;
+}
+
+a:visited {
   text-decoration: none;
   color: black;
 }
 
-.bottom_all_releases a:visited {
+a:hover {
   text-decoration: none;
   color: black;
 }
 
-.bottom_all_releases a:hover {
-  text-decoration: none;
+a:active {
+  text-decoration: underline;
   color: black;
-}
-
-.bottom_all_releases a:active {
-  text-decoration: none;
-  color: blue;
 }
 
 .bottom_all_releases p{

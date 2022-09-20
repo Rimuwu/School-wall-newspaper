@@ -131,7 +131,6 @@ html, body {
 .first_post_title{
   font-family: "Inter-Black", sans-serif;
   font-size: 25px;
-  /* padding-left: 15px; */
   line-height: 0.8;
 
   padding-top: 10px;
@@ -141,7 +140,48 @@ html, body {
 .first_post_text{
   font-family: "Inter-Regular", sans-serif;
   font-size: 20px;
-  /* padding-left: 15px; */
+}
+
+.container_2{
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: row;
+  align-items: flex-start;
+
+  padding: 25px;
+  padding-top: 0;
+
+  /* background-color: red */
+}
+
+.min_post{
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: auto;
+  /* width: 450px; */
+
+  /* background-color: blue; */
+}
+
+.min_post_content{
+  width: 550px;
+
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.min_post_image img{
+  width: 100%;
+  border-radius: 15px;
+}
+
+.min_post_title{
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 1200px) {
