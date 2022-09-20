@@ -56,6 +56,8 @@ header{
   padding-left: 25px;
   padding-right: 25px;
   background-color: white;
+
+  border-radius: 10px;
 }
 
 .bottom_all_releases a{
@@ -118,6 +120,24 @@ header{
 
   .bottom_all_releases p{
     font-size: 20px
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+
+  .header_logo img{
+    width: 100px;
+    height: 40px;
+  }
+
+  .header_logo p{
+    font-size: 15px;
+    padding-top: 5px;
+  }
+
+  .bottom_all_releases p{
+    font-size: 15px
   }
 
 }

@@ -51,19 +51,21 @@ html, body {
   font-family: "Inter-Regular", sans-serif;
 }
 
-
 .container_1{
   padding-bottom: 25px;
+  display: flex;
+  flex-direction: row;
 }
 
 .editor_words{
-  float: right;
-  padding-right: 95px;
+  /* float: right; */
+  padding-right: 25px;
   padding-bottom: 45px;
 }
 
 .editor_words_content{
-  width: 500px;
+  /* width: 500px; */
+  width: 90%; 
 
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 15px;
@@ -87,13 +89,13 @@ html, body {
 }
 
 .first_post{
-  float: left;
+  /* float: left; */
   padding-left: 25px;
   padding-bottom: 40px;
 }
 
 .first_post_content{
-  width: 1180px;
+  width: 95%;
 
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 15px;
@@ -143,12 +145,11 @@ html, body {
 
 @media screen and (max-width: 1800px) {
 
-  .release_content{
+  /* .release_content{
     width: 650px;
   }
 
   .editor_words{
-    float: none;
     padding-right: 0;
     display: flex;
     justify-content: center;
@@ -163,14 +164,13 @@ html, body {
   }
 
   .first_post{
-    float: none;
     padding-right: 0;
     padding-left: 0;
     display: flex;
     justify-content: center;
   }
 
-}
+} */
 
 @media screen and (max-width: 988px) {
 
@@ -180,16 +180,16 @@ html, body {
 
 @media screen and (max-width: 768px) {
 
-  .release_content{
+  /* .release_content{
     width: 548px;
-  }
+  } */
 
 }
 
 @media screen and (max-width: 548px) {
 
-  .release_content{
+  /* .release_content{
     width: 95%;
-  }
+  } */
 
 }
