@@ -31,7 +31,7 @@ header{
   width: 100%;
   padding: 10px;
   padding-right: 15px;
-  padding-bottom: 50px
+  padding-bottom: 50px;
 }
 
 .header_logo img{
@@ -50,6 +50,10 @@ header{
   font-size: 15px;
 }
 
+.header_logo a{
+  color: black
+}
+
 .bottom_all_releases{
   float: right;
   padding: 13.5px;
@@ -60,29 +64,28 @@ header{
   border-radius: 10px;
 }
 
-a{
-  text-decoration: none;
-}
-
-a:visited {
-  text-decoration: none;
-  color: black;
-}
-
-a:hover {
-  text-decoration: none;
-  color: black;
-}
-
-a:active {
-  text-decoration: underline;
-  color: black;
+.bottom_all_releases a{
+  color: black
 }
 
 .bottom_all_releases p{
-
   font-family: "Inter-Black", sans-serif;
-  font-size: 20px
+  font-size: 20px;
+}
+
+.header_menu p:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.header_menu p:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.header_menu p:active {
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width: 980px) and (max-height: 2000px ) {

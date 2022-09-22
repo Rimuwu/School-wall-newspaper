@@ -103,24 +103,33 @@ html, body {
   padding: 15px;
 }
 
-.first_post_content a{
-  text-decoration: none;
+.color_black{
   color: black;
 }
 
-.first_post_content a:visited {
+a{
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
-.first_post_content a:hover {
+a:visited {
   text-decoration: none;
-  color: black;
+  /* color: black; */
 }
 
-.first_post_content a:active {
+a:hover h1{
+  text-decoration: underline;
+  /* color: black; */
+}
+
+a:hover p{
   text-decoration: none;
-  color: black;
+  /* color: black; */
+}
+
+a:active {
+  text-decoration: none;
+  /* color: black; */
 }
 
 .first_post_image img{
@@ -151,18 +160,13 @@ html, body {
 
   padding: 25px;
   padding-top: 0;
-
-  /* background-color: red */
 }
 
 .min_post{
-  padding-bottom: 15px;
+  padding-bottom: 25px;
   padding-left: 10px;
   padding-right: 10px;
   margin: auto;
-  /* width: 450px; */
-
-  /* background-color: blue; */
 }
 
 .min_post_content{
@@ -173,6 +177,10 @@ html, body {
   padding: 15px;
 }
 
+.min_post_image{
+  position: relative
+}
+
 .min_post_image img{
   width: 100%;
   border-radius: 15px;
@@ -180,8 +188,57 @@ html, body {
 
 .min_post_title{
   text-align: left;
+  font-family: "Inter-Black", sans-serif;
+  font-size: 20px;
+}
+
+.play_icon{
+  width: 100px;
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 25px 90px 90px 25px;
+  opacity: 0.75;
+}
+
+.play_icon :hover{
+  width: 90px;
+}
+
+.container_3{
+}
+
+.subscribe{
+  padding-bottom: 50px;
+}
+
+.subscribe_content{
+  background: linear-gradient(90deg, #6fc6f6 0%, #36B7FF 100%);
+  padding: 50px;
+
+  color: white;
+}
+
+.subscribe_content h1{
+  font-family: "Inter-Black", sans-serif;
+  font-size: 40px;
+}
+
+.subscribe_content p{
   font-family: "Inter-Regular", sans-serif;
   font-size: 20px;
+}
+
+.subscribe_image{
+  padding-bottom: 70px;
+}
+
+
+.subscribe_image img{
+  width: 320px;
+  border-radius: 280px;
 }
 
 @media screen and (max-width: 1200px) {
@@ -216,6 +273,10 @@ html, body {
 
   .container_1{
     display: inline-block;
+  }
+
+  .min_post_content{
+    width: 400px;
   }
 
 }
