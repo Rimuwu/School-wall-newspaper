@@ -250,6 +250,49 @@ a:active {
   border-radius: 280px;
 }
 
+.container_4{
+  color: white;
+  padding: 15px;
+  background-color: black
+}
+
+.members_title{
+  font-family: "Inter-Black", sans-serif;
+  padding-bottom: 20px;
+}
+
+.members{
+  width: 600px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.member{
+  font-family: "Inter-Regular", sans-serif;
+
+  padding: 5px;
+  margin-bottom: 10px;
+  padding-right: 30px;
+
+  display: flex;
+  text-align: left;
+
+  width: 300px;
+}
+
+.member_content p{
+  color: rgb(164, 164, 164)
+}
+
+.member img{
+  width: 50px;
+  border-radius: 90px;
+  margin-right: 15px;
+}
+
 @media screen and (max-width: 1200px) {
 
   .release_content{
