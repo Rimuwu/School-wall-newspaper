@@ -218,6 +218,7 @@ a:active {
 }
 
 .container_3{
+  padding-bottom: 30px;
 }
 
 .subscribe{
@@ -243,9 +244,11 @@ a:active {
 
 .subscribe_image{
   float: right;
+  border-radius: 180px;
 }
 
-.subscribe_image img{
+.subscribe img{
+  float: right;
   width: 220px;
   border-radius: 280px;
 }
@@ -341,6 +344,10 @@ a:active {
 
   .subscribe_image img{
     display: none;
+  }
+
+  .members{
+    width: 100%;
   }
 }
 
