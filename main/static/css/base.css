@@ -64,7 +64,7 @@ header{
   border-radius: 10px;
 }
 
-.bottom_all_releases a{
+.header_menu a{
   color: black
 }
 
@@ -86,6 +86,65 @@ header{
 .header_menu p:active {
   text-decoration: none;
   color: black;
+}
+
+footer{
+  padding: 20px;
+  padding-top: 40px;
+
+  font-family: "Inter-Black", sans-serif;
+}
+
+.hyperlinks_list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  padding-right: 10px;
+  padding-left: 35px;
+}
+
+.hyperlinks_list a{
+  padding: 15px;
+}
+
+.hyperlinks_list h1{
+  font-size: 20px;
+}
+
+.footer_content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer_content{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.footer_content p{
+  padding: 10px;
+  padding-right: 30px;
+}
+
+.footer_content h1{
+  font-size: 40px;
+}
+
+.project_participant{
+  padding-right: 30px;
+}
+
+.project_participant h2{
+  font-size: 18px;
+}
+
+.project_participant p{
+  padding: 0;
+  color: rgba(0, 0, 0, 0.5);
 }
 
 @media screen and (max-width: 980px) and (max-height: 2000px ) {

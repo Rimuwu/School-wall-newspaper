@@ -20,7 +20,7 @@
 
 <div class="release">
 
-  <div class="release_title">
+  <div tabindex="0" class="release_title">
     <p>Ноябрь. 01.</p>
     <h1>#5. Тема выпуска</h1>
   </div>
@@ -67,7 +67,7 @@
 
   <div class="editor_words">
 
-    <div class="editor_words_content">
+    <div tabindex="0" class="editor_words_content">
 
       <div class="editor_words_title">
         <h1>👨‍💻Слово главного<br> редактора</h1>
@@ -154,12 +154,8 @@
 
 <div class='container_3'>
 
-  <div class="subscribe">
-    <a href="https://t.me/wallnewspaper1506">
-
-      <div class="subscribe_image">
-        <img src="{% static "images/icon_telegram.svg" %}">
-      </div>
+  <a href="https://t.me/wallnewspaper1506">
+    <div class="subscribe">
 
       <div class="subscribe_content">
 
@@ -167,9 +163,12 @@
         <p>Чтобы первым узнать о новом выпуске!</p>
 
       </div>
-    </a>
 
-  </div>
+      <img src="{% static "images/icon_telegram.svg" %}">
+
+    </div>
+
+  </a>
 
 </div>
 
@@ -246,92 +245,102 @@
     <h1>Над выпуском работали</h1>
   </div>
 
-  <div class="members">
+  <!-- <a href="">
+    <div class="gradient_circle">
+      <h1>Написать нам</h1>
+    </div>
+  </a> -->
 
-    <div class='member'>
+  <div class="panel_container">
 
-      <img src="{% static "images/avatar_1.jpg" %}">
+    <div class="members">
 
-      <div class="member_content">
-        <h2>Ира Д.</h2>
-        <p>Ведущий дизайнер</p>
+      <div class='member'>
+
+        <img src="{% static "images/avatar_1.jpg" %}">
+
+        <div class="member_content">
+          <h2>Ира Д.</h2>
+          <p>Ведущий дизайнер</p>
+        </div>
+
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_3.jpg" %}">
 
-      <img src="{% static "images/avatar_3.jpg" %}">
+        <div class="member_content">
+          <h2>Алёна Р.</h2>
+          <p>Иллюстратор</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Алёна Р.</h2>
-        <p>Иллюстратор</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_2.jpg" %}">
 
-      <img src="{% static "images/avatar_2.jpg" %}">
+        <div class="member_content">
+          <h2>Алексндр Д.</h2>
+          <p>Фоторедактор</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Алексндр Д.</h2>
-        <p>Фоторедактор</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_5.jpg" %}">
 
-      <img src="{% static "images/avatar_5.jpg" %}">
+        <div class="member_content">
+          <h2>Наталия В.</h2>
+          <p>Верстальщица</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Наталия В.</h2>
-        <p>Верстальщица</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_4.jpg" %}">
 
-      <img src="{% static "images/avatar_4.jpg" %}">
+        <div class="member_content">
+          <h2>Виктор Л.</h2>
+          <p>Ведущий дизайнер</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Виктор Л.</h2>
-        <p>Ведущий дизайнер</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_7.jpg" %}">
 
-      <img src="{% static "images/avatar_7.jpg" %}">
+        <div class="member_content">
+          <h2>Татьяна Г.</h2>
+          <p>Редактор</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Татьяна Г.</h2>
-        <p>Редактор</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_6.jpg" %}">
 
-      <img src="{% static "images/avatar_6.jpg" %}">
+        <div class="member_content">
+          <h2>Артём З.</h2>
+          <p>Программист</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Артём З.</h2>
-        <p>Программист</p>
       </div>
 
-    </div>
+      <div class='member'>
 
-    <div class='member'>
+        <img src="{% static "images/avatar_8.jpg" %}">
 
-      <img src="{% static "images/avatar_8.jpg" %}">
+        <div class="member_content">
+          <h2>Иван И.</h2>
+          <p>Надзиратель</p>
+        </div>
 
-      <div class="member_content">
-        <h2>Иван И.</h2>
-        <p>Надзиратель</p>
       </div>
 
     </div>
@@ -340,6 +349,5 @@
 
 </div>
 
-<footer></footer>
 
 {% endblock %}

@@ -17,23 +17,24 @@
 
       <div class="header_menu">
 
-        <div class="bottom_all_releases">
-          <a href="">
+        <a tabindex="1" href="">
+          <div class="bottom_all_releases">
             <p>
               Все выпуски
             </p>
-          </a>
-        </div>
+          </div>
+        </a>
 
-        <div class="header_logo">
+        <div tabindex="-1" class="header_logo">
 
-          <a href="">
+          <a tabindex="0" href="">
             <img src="{% static "images/logo.png" %}">
 
             <p>
               Официальное медиа<br>
               школы 1506
             </p>
+            
           </a>
 
         </div>
@@ -47,6 +48,43 @@
     {% block content %} {% endblock %}
 
     <footer>
+
+      <div class='hyperlinks_list'>
+
+        <a href=""><h1>Школа 1506</h1></a>
+        <a href=""><h1>О проекте</h1></a>
+        <a href=""><h1>Контакты</h1></a>
+
+      </div>
+
+      <div class='footer_content'>
+
+        <h1>&copy</h1>
+
+        <p>Проект Официальное<br />медиа школы 1506</p>
+
+        <div class='project_participant'>
+
+          <h2>Артём Зинкин</h2>
+          <p>Руководитель проекта</p>
+
+        </div>
+
+        <div class='project_participant'>
+
+          <h2>Арсений Кофанов</h2>
+          <p>Разработка</p>
+
+        </div>
+
+        <div class='project_participant'>
+
+          <h2>Артемий Скороходов</h2>
+          <p>Главный редактор</p>
+
+        </div>
+
+      </div>
 
     </footer>
 
