@@ -45,21 +45,20 @@
   <div class="first_post">
 
     <div class="first_post_content">
-      <a href="#">
 
       <div class="first_post_image">
         <img src="{% static "images/test_post_image.jpg" %}">
       </div>
 
-      <div class="first_post_title color_black">
-        <h1>Заголовок первого поста</h1>
+      <div class="first_post_title">
+        <a class="stretched-link" href="">
+          <h2 class="ms-2 color_black">Заголовок первого поста</h2>
+        </a>
       </div>
 
       <div class="first_post_text color_black">
-        <p>В ТЕХНО вас как всегда ждут исторический экскурс, рассказы про современные технологии, игры, тесты и подкаст.</p>
+        <p class="ms-2">В ТЕХНО вас как всегда ждут исторический экскурс, рассказы про современные технологии, игры, тесты и подкаст.</p>
       </div>
-
-      </a>
 
     </div>
 
@@ -70,7 +69,7 @@
     <div tabindex="0" class="editor_words_content">
 
       <div class="editor_words_title">
-        <h1>👨‍💻Слово главного<br> редактора</h1>
+        <h2>👨‍💻Слово главного<br>редактора</h2>
       </div>
 
       <div class="editor_words_text">
@@ -97,7 +96,7 @@
       </div>
 
       <div class="min_post_title color_black">
-        <h1>Заголовок первого поста</h1>
+        <h2>Заголовок первого поста</h2>
       </div>
 
       </a>
@@ -120,7 +119,7 @@
 
 
       <div class="min_post_title color_black">
-        <h1>Заголовок второго поста</h1>
+        <h2>Заголовок второго поста</h2>
       </div>
 
       </a>
@@ -142,7 +141,7 @@
       </div>
 
       <div class="min_post_title color_black">
-        <h1>Заголовок третьего поста</h1>
+        <h2>Заголовок третьего поста</h2>
       </div>
 
       </a>
@@ -154,21 +153,18 @@
 
 <div class='container_3'>
 
-  <a href="https://t.me/wallnewspaper1506">
-    <div class="subscribe">
+  <div class="subscribe">
 
-      <div class="subscribe_content">
+    <div class="subscribe_content">
 
-        <h1>Подписаться</h1>
-        <p>Чтобы первым узнать о новом выпуске!</p>
-
-      </div>
-
-      <img src="{% static "images/icon_telegram.svg" %}">
+      <a class="stretched-link" href="https://t.me/wallnewspaper1506"><h3 class='h1'>Подписаться</h3></a>
+      <p class='h2'>Чтобы первым узнать о новом выпуске!</p>
 
     </div>
 
-  </a>
+    <img src="{% static "images/icon_telegram.svg" %}">
+
+  </div>
 
 </div>
 
@@ -184,7 +180,7 @@
       </div>
 
       <div class="min_post_title color_black">
-        <h1>Заголовок первого поста</h1>
+        <h2>Заголовок первого поста</h2>
       </div>
 
       </a>
@@ -207,7 +203,7 @@
 
 
       <div class="min_post_title color_black">
-        <h1>Заголовок второго поста</h1>
+        <h2>Заголовок второго поста</h2>
       </div>
 
       </a>
@@ -229,7 +225,7 @@
       </div>
 
       <div class="min_post_title color_black">
-        <h1>Заголовок третьего поста</h1>
+        <h2>Заголовок третьего поста</h2>
       </div>
 
       </a>
@@ -239,115 +235,77 @@
 
 </div>
 
-<div class="container_4">
-
-  <div class="members_title">
-    <h1>Над выпуском работали</h1>
-  </div>
-
-  <!-- <a href="">
-    <div class="gradient_circle">
-      <h1>Написать нам</h1>
+<section class="bg-dark py-5 position-relative authors-wrapper">
+    <div class="container-xl">
+        <h3 class="display-3 text-white mb-5">Над выпуском работали</h3>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row row-cols-lg-2">
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                            <span class="author-post">дизайнер</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                            <span class="author-post">дизайнер</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                            <span class="author-post">дизайнер</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                            <span class="author-post">дизайнер</span>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center author-item">
+                        <div class="flex-shrink-0">
+                            <img src="https://via.placeholder.com/500" alt="..." class="author-img rounded-circle">
+                        </div>
+                        <div class="flex-grow-1 ms-3">
+                            <span class="author-name">Иван Иванов</span>
+                            <span class="author-post">дизайнер</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="new-post-wrapper">
+                    <a href="" class="btn-new-post">
+                        <span class="btn-new-post-text">Написть</span>
+                        <span class="btn-new-post-text">статью</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-  </a> -->
-
-  <div class="panel_container">
-
-    <div class="members">
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_1.jpg" %}">
-
-        <div class="member_content">
-          <h2>Ира Д.</h2>
-          <p>Ведущий дизайнер</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_3.jpg" %}">
-
-        <div class="member_content">
-          <h2>Алёна Р.</h2>
-          <p>Иллюстратор</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_2.jpg" %}">
-
-        <div class="member_content">
-          <h2>Алексндр Д.</h2>
-          <p>Фоторедактор</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_5.jpg" %}">
-
-        <div class="member_content">
-          <h2>Наталия В.</h2>
-          <p>Верстальщица</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_4.jpg" %}">
-
-        <div class="member_content">
-          <h2>Виктор Л.</h2>
-          <p>Ведущий дизайнер</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_7.jpg" %}">
-
-        <div class="member_content">
-          <h2>Татьяна Г.</h2>
-          <p>Редактор</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_6.jpg" %}">
-
-        <div class="member_content">
-          <h2>Артём З.</h2>
-          <p>Программист</p>
-        </div>
-
-      </div>
-
-      <div class='member'>
-
-        <img src="{% static "images/avatar_8.jpg" %}">
-
-        <div class="member_content">
-          <h2>Иван И.</h2>
-          <p>Надзиратель</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</div>
-
+</section>
 
 {% endblock %}

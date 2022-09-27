@@ -22,13 +22,15 @@ html, body {
 .release{
   padding-left: 20px;
   padding-top: 65px;
+  font-family: "Inter-Black", sans-serif;
 }
 .release_title{
   font-family: "Inter-Black", sans-serif;
 }
 
 .release_title h1{
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-family: "Inter-Black", sans-serif;
 
   color: transparent;
 	-webkit-background-clip: text;
@@ -43,7 +45,6 @@ html, body {
 
 .release_title p{
   color: black;
-  font-size: 15px;
 }
 
 .release_content{
@@ -97,6 +98,7 @@ html, body {
 
 .first_post_content{
   width: 95%;
+  position: relative;
 
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 15px;
@@ -107,30 +109,29 @@ html, body {
   color: black;
 }
 
-a{
+.color_black :hover, :active{
+  color: black;
+}
+
+/* a{
   text-decoration: none;
-  /* color: black; */
 }
 
 a:visited {
   text-decoration: none;
-  /* color: black; */
 }
 
 a:hover h1{
   text-decoration: underline;
-  /* color: black; */
 }
 
 a:hover p{
   text-decoration: none;
-  /* color: black; */
 }
 
 a:active {
   text-decoration: none;
-  /* color: black; */
-}
+} */
 
 .first_post_image img{
   width: 100%;
@@ -172,6 +173,7 @@ a:active {
 
 .min_post_content{
   width: 550px;
+  position: relative;
 
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 15px;
@@ -208,7 +210,7 @@ a:active {
   width: 90px;
 }
 
-.type_text p{
+.type_text{
   color: white;
   font-family: "Inter-Regular", sans-serif;
 
@@ -224,6 +226,7 @@ a:active {
 
 .subscribe{
   height: 200px;
+  position: relative;
 
   display: flex;
   flex-direction: row;
@@ -239,18 +242,17 @@ a:active {
   padding-right: 10px;
 
   color: white;
-
-  margin-right: 35%
+  text-decoration: none;
+  margin-right: 35%;
 }
 
-.subscribe_content h1{
+.subscribe_content h3{
   font-family: "Inter-Black", sans-serif;
-  font-size: 40px;
+  color: white;
 }
 
 .subscribe_content p{
   font-family: "Inter-Regular", sans-serif;
-  font-size: 20px;
 }
 
 .subscribe img{
@@ -431,4 +433,59 @@ a:active {
     padding-bottom: 50px;
   }
 
+}
+
+.authors-wrapper {
+    padding: 3.125em 0;
+    position: relative;
+}
+
+
+.author-item {
+    line-height: 1;
+    margin-bottom: 1.3em;
+}
+
+.author-img {
+    width: 64px;
+    height: auto;
+}
+
+.author-name {
+    color: #fff;
+    display: block;
+}
+.author-post {
+    color: #ffffff9e;
+}
+
+.new-post-wrapper {
+    position: absolute;
+    overflow: hidden;
+    right: 0px;
+    bottom: -100px;
+    width: 480px;
+    height: 550px;
+}
+.btn-new-post {
+    line-height: 1;
+    color: #000;
+    font-size: 70px;
+    font-weight: 300;
+    text-decoration: none;
+    flex-direction: column;
+    border-radius: 50%;
+    width: 550px;
+    height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--post-color-primary, #FFC700);
+    background: linear-gradient(90deg, var(--post-color-primary, #FFC700) 0%, var(--post-color-secondary, #FF7A00) 100%);
+}
+
+.btn-new-post :active,
+.btn-new-post :hover {
+    color: #fff;
+    background: linear-gradient(-90deg, var(--post-color-primary, #FFC700) 0%, var(--post-color-secondary, #FF7A00) 100%);
 }
