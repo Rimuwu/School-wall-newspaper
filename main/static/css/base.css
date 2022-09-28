@@ -29,67 +29,6 @@ header{
   font-family: "Inter-Black", sans-serif;
 }
 
-.header_menu{
-  width: 100%;
-  padding: 10px;
-  padding-right: 15px;
-  padding-bottom: 50px;
-}
-
-.header_logo img{
-  width: 150px;
-  height: 50px;
-  float: left;
-}
-
-.header_logo p{
-  display: inline-block;
-  padding-top: 8px;
-  padding-left: 5px;
-  float: left;
-
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 15px;
-}
-
-.header_logo a{
-  color: black
-}
-
-.bottom_all_releases{
-  float: right;
-  padding: 13.5px;
-  padding-left: 25px;
-  padding-right: 25px;
-  background-color: white;
-
-  border-radius: 10px;
-}
-
-.header_menu a{
-  color: black
-}
-
-.bottom_all_releases p{
-  font-family: "Inter-Black", sans-serif;
-  font-size: 20px;
-}
-
-.header_menu p:visited {
-  text-decoration: none;
-  color: black;
-}
-
-.header_menu p:hover {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.header_menu p:active {
-  text-decoration: none;
-  color: black;
-}
-
 footer{
   padding: 20px;
   padding-top: 40px;
@@ -132,75 +71,19 @@ footer{
   padding-right: 30px;
 }
 
-.footer_content h1{
+/* .footer_content h1{
   font-size: 40px;
-}
+} */
 
 .project_participant{
   padding-right: 30px;
 }
 
-.project_participant h2{
+/* .project_participant h2{
   font-size: 18px;
-}
+} */
 
 .project_participant p{
   padding: 0;
   color: rgba(0, 0, 0, 0.5);
-}
-
-@media screen and (max-width: 980px) and (max-height: 2000px ) {
-
-  .header_logo img{
-    width: 225px;
-    height: 75px;
-  }
-
-  .header_logo p{
-    font-size: 25px;
-  }
-
-  .bottom_all_releases p{
-    font-size: 35px
-  }
-
-  .header_menu{
-    padding-bottom: 75px;
-  }
-
-}
-
-@media screen and (max-width: 760px) {
-
-  .header_logo img{
-    width: 150px;
-    height: 50px;
-  }
-
-  .header_logo p{
-    font-size: 15px;
-  }
-
-  .bottom_all_releases p{
-    font-size: 20px
-  }
-
-}
-
-@media screen and (max-width: 560px) {
-
-  .header_logo img{
-    width: 100px;
-    height: 40px;
-  }
-
-  .header_logo p{
-    font-size: 15px;
-    padding-top: 5px;
-  }
-
-  .bottom_all_releases p{
-    font-size: 15px
-  }
-
 }

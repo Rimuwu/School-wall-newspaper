@@ -19,6 +19,11 @@ html, body {
   height: 100%;
 }
 
+.inter_font{
+  font-family: "Inter-Regular", sans-serif;
+}
+
+
 .release{
   padding-left: 20px;
   padding-top: 65px;
@@ -152,7 +157,7 @@ a:active {
   font-size: 20px;
 }
 
-.container_2{
+/* .container_2{
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -162,37 +167,51 @@ a:active {
 
   padding: 25px;
   padding-top: 0;
+} */
+
+.posts_container{
+  /* background-color: blue; */
+
+  padding: 30px;
+}
+
+.posts{
+  /* align-items: center; */
 }
 
 .min_post{
   padding-bottom: 25px;
+
+  /* padding-bottom: 25px;
   padding-left: 10px;
   padding-right: 10px;
-  margin: auto;
+  margin: auto; */
+
+  /* width: 550px; */
+/*
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px; */
 }
 
 .min_post_content{
-  width: 550px;
   position: relative;
+  padding: 15px;
+  padding-bottom: 0;
 
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5), 1px 1px 5px rgba(255, 255, 255, 1);
   border-radius: 15px;
-  padding: 15px;
 }
 
-.min_post_image{
-  position: relative;
-}
-
-.min_post_image img{
+.min_post_content img{
   width: 100%;
-  border-radius: 15px;
+  border-radius: 5px;
 }
 
 .min_post_title{
   text-align: left;
   font-family: "Inter-Black", sans-serif;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 .play_icon{
@@ -260,76 +279,6 @@ a:active {
   border-radius: 180px;
 }
 
-.container_4{
-  color: white;
-  padding: 15px;
-  background-color: black;
-}
-
-.members_title{
-  font-family: "Inter-Black", sans-serif;
-  padding-bottom: 20px;
-}
-
-.panel_container{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.members{
-  width: 600px;
-
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-.member{
-  font-family: "Inter-Regular", sans-serif;
-
-  padding: 5px;
-  margin-bottom: 10px;
-  padding-right: 30px;
-
-  display: flex;
-  text-align: left;
-
-  width: 300px;
-}
-
-.member_content p{
-  color: rgb(164, 164, 164)
-}
-
-.member img{
-  width: 50px;
-  border-radius: 90px;
-  margin-right: 15px;
-}
-
-.gradient_circle{
-
-  background: linear-gradient(90deg, rgba(255, 199, 0, 1) 0%, rgba(255, 122, 0, 1) 100%);
-
-  clip-path: circle(50%);
-  height: 30em;
-  width: 30em;
-
-  position: absolute;
-  left: 70%;
-
-}
-
-.gradient_circle h1{
-  position: relative;
-  text-align: center;
-  color: white;
-  top: 45%;
-}
-
 @media screen and (max-width: 1200px) {
 
   .release_content{
@@ -364,10 +313,6 @@ a:active {
     display: inline-block;
   }
 
-  .min_post_content{
-    width: 400px;
-  }
-
   .subscribe_content{
     margin-right: 20%
   }
@@ -378,14 +323,6 @@ a:active {
 
   .subscribe_content p{
     font-size: 30px;
-  }
-
-  .members{
-    width: 100%;
-  }
-
-  .member_content p{
-    font-size: 20px;
   }
 
 }
@@ -402,18 +339,6 @@ a:active {
 
   .subscribe_content{
     margin-right: 0;
-  }
-
-  .min_post_content{
-    width: 100%;
-  }
-
-  .subscribe_content h1{
-    font-size: 40px;
-  }
-
-  .subscribe_content p{
-    font-size: 30px;
   }
 
 }
