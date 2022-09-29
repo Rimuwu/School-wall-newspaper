@@ -34,7 +34,6 @@ html, body {
 }
 
 .release_title h1{
-  /* font-size: 50px; */
   font-family: "Inter-Black", sans-serif;
 
   color: transparent;
@@ -50,6 +49,7 @@ html, body {
 
 .release_title p{
   color: black;
+  margin: 0;
 }
 
 .release_content{
@@ -279,6 +279,67 @@ a:active {
   border-radius: 180px;
 }
 
+.authors-wrapper {
+    padding: 3.125em 0;
+    position: relative;
+}
+
+
+.author-item {
+    line-height: 1;
+    margin-bottom: 1.3em;
+}
+
+.author-img {
+    width: 64px;
+    height: auto;
+}
+
+.author-name {
+    color: #fff;
+    display: block;
+}
+.author-post {
+    color: #ffffff9e;
+}
+
+.new-post-wrapper {
+    position: absolute;
+    overflow: hidden;
+    bottom: -150px;
+
+    right: 0px;
+    width: 420px;
+    height: 550px;
+}
+
+.btn-new-post {
+    line-height: 1;
+    color: white;
+    font-size: 70px;
+    font-weight: 300;
+    text-decoration: none;
+    flex-direction: column;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--post-color-primary, #FFC700);
+    background: linear-gradient(90deg, var(--post-color-primary, #FFC700) 0%, var(--post-color-secondary, #FF7A00) 100%);
+}
+
+.new-post-text{
+  text-decoration: none;
+  color: white;
+}
+
+.new-post-wrapper :hover{
+  color: white;
+  text-decoration: underline;
+}
+
 @media screen and (max-width: 1200px) {
 
   .release_content{
@@ -341,6 +402,16 @@ a:active {
     margin-right: 0;
   }
 
+  .new-post-wrapper {
+    display: inline-block;
+    position: relative;
+
+    position: relative;
+    overflow: visible;
+    bottom: 0;
+
+  }
+
 }
 
 @media (max-width: 548px) {
@@ -358,59 +429,4 @@ a:active {
     padding-bottom: 50px;
   }
 
-}
-
-.authors-wrapper {
-    padding: 3.125em 0;
-    position: relative;
-}
-
-
-.author-item {
-    line-height: 1;
-    margin-bottom: 1.3em;
-}
-
-.author-img {
-    width: 64px;
-    height: auto;
-}
-
-.author-name {
-    color: #fff;
-    display: block;
-}
-.author-post {
-    color: #ffffff9e;
-}
-
-.new-post-wrapper {
-    position: absolute;
-    overflow: hidden;
-    right: 0px;
-    bottom: -100px;
-    width: 480px;
-    height: 550px;
-}
-.btn-new-post {
-    line-height: 1;
-    color: #000;
-    font-size: 70px;
-    font-weight: 300;
-    text-decoration: none;
-    flex-direction: column;
-    border-radius: 50%;
-    width: 550px;
-    height: 550px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--post-color-primary, #FFC700);
-    background: linear-gradient(90deg, var(--post-color-primary, #FFC700) 0%, var(--post-color-secondary, #FF7A00) 100%);
-}
-
-.btn-new-post :active,
-.btn-new-post :hover {
-    color: #fff;
-    background: linear-gradient(-90deg, var(--post-color-primary, #FFC700) 0%, var(--post-color-secondary, #FF7A00) 100%);
 }

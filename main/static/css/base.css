@@ -43,15 +43,11 @@ footer{
   flex-wrap: nowrap;
 
   padding-right: 10px;
-  padding-left: 35px;
+  padding-left: 25px;
 }
 
 .hyperlinks_list a{
   padding: 15px;
-}
-
-.hyperlinks_list h1{
-  font-size: 20px;
 }
 
 .footer_content{
@@ -66,24 +62,41 @@ footer{
   padding-right: 10px;
 }
 
+.project_info{
+  display: flex;
+}
+
+.proj_copy{
+  /* padding-top: 15px; */
+}
+
 .footer_content p{
   padding: 10px;
   padding-right: 30px;
 }
 
-/* .footer_content h1{
-  font-size: 40px;
-} */
-
 .project_participant{
   padding-right: 30px;
+  line-height: 1
 }
-
-/* .project_participant h2{
-  font-size: 18px;
-} */
 
 .project_participant p{
   padding: 0;
   color: rgba(0, 0, 0, 0.5);
+}
+
+.all_releases{
+  font-size: 30px;
+}
+
+@media (max-width: 768px) {
+
+  /* footer{
+    padding-top: 100px;
+  } */
+
+  .footer_content{
+    display: inline-block;
+  }
+
 }
