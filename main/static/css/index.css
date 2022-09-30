@@ -265,6 +265,10 @@ a:active {
   margin-right: 35%;
 }
 
+.participants{
+  display: flex;
+}
+
 .subscribe_content h3{
   font-family: "Inter-Black", sans-serif;
   color: white;
@@ -370,10 +374,6 @@ a:active {
 
 @media (max-width: 988px) {
 
-  .container_1{
-    display: inline-block;
-  }
-
   .subscribe_content{
     margin-right: 20%
   }
@@ -389,6 +389,10 @@ a:active {
 }
 
 @media (max-width: 768px) {
+
+  .container_1{
+    display: inline-block;
+  }
 
   .release_content{
     width: 75%;
@@ -407,9 +411,12 @@ a:active {
     position: relative;
 
     position: relative;
-    overflow: visible;
+    /* overflow: visible; */
     bottom: 0;
+    width: 101%
+  }
 
+  .btn-new-post {
   }
 
 }
