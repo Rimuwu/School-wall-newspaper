@@ -1,262 +1,221 @@
-{% extends 'main/base.html' %}
 {% load static %}
 
-
-{% block title %}
-
-{{ title }}
-
-{% endblock %}
-
-
-{% block head %}
-
-<link rel="stylesheet" href="{% static "css/index.css" %}">
-
-{% endblock %}
-
-
-{% block release %}
-
-<div class="release">
-
-  <div tabindex="0" class="release_title">
-    <p>Ноябрь. 01.</p>
-    <h1>#5. Тема выпуска</h1>
-  </div>
-
-  <div class="release_content">
-
-    <p>
-      В новом номере ТЕХНО мы рассказываем об одной из самых любимых наших тем — о погоде и том, как её предсказать. В ТЕХНО вас как всегда ждут исторический экскурс, рассказы про современные технологии, игры, тесты и подкаст. Подключайтесь!
-    </p>
-
-  </div>
-
-</div>
-
-{% endblock %}
-
-
-{% block content %}
-
-<div class='container_1'>
-
-  <div class="first_post">
-
-    <div class="first_post_content">
-
-      <div class="first_post_image">
-        <img src="{% static "images/test_post_image.jpg" %}">
-      </div>
-
-      <div class="first_post_title">
-        <a class="stretched-link" href="">
-          <h2 class="ms-2 color_black">Заголовок первого поста</h2>
-        </a>
-      </div>
-
-      <div class="first_post_text color_black">
-        <p class="ms-2">В ТЕХНО вас как всегда ждут исторический экскурс, рассказы про современные технологии, игры, тесты и подкаст.</p>
-      </div>
-
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ release.title }}</title>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+</head>
+<body>
+    <div class="hero mb-5"
+    style="--hero-bg-left: {{ release.bg_left_color }}; --hero-bg-right: {{ release.bg_right_color }}; --hero-title-left: {{ release.title_left_color }}; --hero-title-right:{{ release.title_right_color }};">
+        <nav class="navbar py-3">
+            <div class="container-xl">
+                <a class="d-flex align-items-center" href="{% url 'main' %}">
+                    <img src="{% static "images/logo.png" %}" width="35">
+                    <small class="ms-3 lh-1">
+                        Официальное медиа<br>
+                        школы 1506
+                    </small>
+                </a>
+                <a class="btn btn-sm btn-outline-dark ms-auto" href="">Все выпуски</a>
+            </div>
+        </nav>
+        <header class="container-xl">
+            <div class="row mt-5 pt-5">
+                    <div class="d-flex h1 title col-lg-8 col-xl-6">
+                        <span class="me-2 fw-light">#{{ release.number }}.</span>
+                        <h1>{{ release.title }}</h1>
+                    </div>
+                    <p class="lead fw-normal col-lg-8 pb-5">
+                        {{ release.description }}
+                    </p>
+                </div>
+            </div>
+        </header>
     </div>
+    <div class="container-xl mb-4">
+        <div class="row p-1">
+            {% if release.editor_words %}
+            <main class="col order-lg-last pt-3">
+                <div class="card">
+                    <div class="px-4">
 
-  </div>
+                        {% if release.editor.image %}
+                            <img src="{{ release.editor.image.url }}" alt="Главный редактор" class="rounded-5" width="250">
+                        {% endif %}
 
-  <div class="editor_words">
-
-    <div tabindex="0" class="editor_words_content">
-
-      <div class="editor_words_title">
-        <h2>👨‍💻Слово главного<br>редактора</h2>
-      </div>
-
-      <div class="editor_words_text">
-        <p>
-          В новом номере ТЕХНО мы рассказываем об одной из самых любимых наших тем — о погоде и том, как её предсказать. В ТЕХНО вас как всегда ждут исторический экскурс, рассказы про современные технологии, игры, тесты и подкаст. Подключайтесь!
-        </p>
-      </div>
-
+                    </div>
+                    <div class="card-body px-4">
+                        <h2 class="h3">Слово главного редактора</h2>
+                        {% autoescape off %}{{ release.editor_words }}{% endautoescape %}
+                    </div>
+                </div>
+            </main>
+            {% endif %}
+            {% if first_post %}
+                <article class="col-lg-7 post-bg">
+                    <div class="card post-content">
+                        <img src="{{ first_post.image.url }}" alt="" class="img-fluid rounded">
+                        <div class="card-body">
+                            <h2>
+                                <a href="{{ first_post.get_absolute_url }}" class="stretched-link">
+                                    {{first_post.title}}
+                                </a>
+                            </h2>
+                            {% if first_post.short_description %}
+                                {{first_post.short_description}}
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+            {% endif %}
+        </div>
     </div>
-
-  </div>
-
-</div>
-
-
-<section class="posts_container">
-    <div class="row row-cols-lg-3 posts">
-
-        <div class="col-6 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_1.png" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок первого поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-6 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_2.jpg" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок второго поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-12 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_3.jpg" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок третьего поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-<div class='container_3'>
-
-  <div class="subscribe">
-
-    <div class="subscribe_content">
-
-      <a class="stretched-link" href="https://t.me/wallnewspaper1506"><h3 class='h1'>Подписаться</h3></a>
-      <p class='h2'>Чтобы первым узнать о новом выпуске!</p>
-
-    </div>
-
-    <img src="{% static "images/icon_telegram.svg" %}">
-
-  </div>
-
-</div>
-
-<section class="posts_container">
-    <div class="row row-cols-lg-3 posts">
-
-        <div class="col-6 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_1.png" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок первого поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-6 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_2.jpg" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок второго поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-12 min_post">
-            <div class="card h-100 min_post_content m-20">
-
-                <img class="card-img-top min_post_image" src="{% static "images/min_post_3.jpg" %}">
-
-                <div class="card-body">
-                    <a href="" class="stretched-link"><h2 class="h4 card-title min_post_title color_black">Заголовок третьего поста</h2></a>
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-</section>
-
-<section class="bg-dark py-5 position-relative authors-wrapper">
-    <div class="container-xl">
-        <h3 class="display-3 text-white mb-5">Над выпуском работали</h3>
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="row row-cols-lg-2">
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_1.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                            <span class="author-post inter_font">дизайнер</span>
-                        </div>
+    <section class="container-xl mb-5">
+        <div class="row p-2">
+            {% for post in one_colum_posts %}
+                <article class="card col-sm-6 col-lg-4 h-100 post-bg">
+                    <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
+                    <div class="card-body">
+                        <h2 class="h5">
+                            <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                {{ post.title }}
+                            </a>
+                        </h2>
                     </div>
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_2.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                            <span class="author-post inter_font">дизайнер</span>
-                        </div>
+                </article>
+            {% endfor %}
+            <article class="card col-sm-12 col-lg-4 h-100 post-bg">
+                <img src="{{ big_one_post.image.url }}" alt="" class="img-fluid rounded">
+                <div class="card-body">
+                    <h2 class="h5">
+                        <a href="{{ big_one_post.get_absolute_url }}" class="stretched-link">
+                            {{ big_one_post.title }}
+                        </a>
+                    </h2>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="logo-padding">
+      <section class="bg-info mb-5">
+          <div class="container-xl">
+              <div class="row">
+                  <div class="col">
+                      <a href="https://t.me/wallnewspaper1506" class="text-white d-flex flex-column py-5">
+                          <span class="display-4">Подписаться</span>
+                          <span class="fs-4">Чтобы первым узнать о новом выпуске</span>
+                      </a>
+                  </div>
+                  <div class="col">
+                    <div class="d-flex logo">
+                      <a href="https://t.me/wallnewspaper1506">
+                        <img src="{% static "images/icon_telegram.svg" %}" alt='...' class="logo-img">
+                      </a>
                     </div>
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_3.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                            <span class="author-post inter_font">дизайнер</span>
-                        </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+    </section>
+    <section class="container-xl mb-5">
+        <div class="row p-2">
+            {% for post in two_colum_posts %}
+                <article class="card col-sm-6 col-lg-4 h-100 post-bg">
+                    <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
+                    <div class="card-body">
+                        <h2 class="h5">
+                            <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                {{ post.title }}
+                            </a>
+                        </h2>
                     </div>
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_4.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_5.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                            <span class="author-post inter_font">дизайнер</span>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center author-item">
-                        <div class="flex-shrink-0">
-                            <img src="{% static "images/avatar_6.jpg" %}" alt="..." class="author-img rounded-circle">
-                        </div>
-                        <div class="flex-grow-1 ms-3">
-                            <span class="author-name inter_font">Иван Иванов</span>
-                            <span class="author-post inter_font">дизайнер</span>
-                        </div>
+                </article>
+            {% endfor %}
+            <article class="card col-sm-12 col-lg-4 h-100 post-bg">
+                <img src="{{ big_two_post.image.url }}" alt="" class="img-fluid rounded">
+                <div class="card-body">
+                    <h2 class="h5">
+                        <a href="{{ big_two_post.get_absolute_url }}" class="stretched-link">
+                            {{ big_two_post.title }}
+                        </a>
+                    </h2>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="bg-dark py-5 position-relative authors-wrapper">
+        <div class="container-xl">
+            <h3 class="display-3 text-white mb-5 fw-light">Над выпуском работали</h3>
+            <div class="row wrapper-min">
+                <div class="col-md-6">
+                    <div class="row">
+                        {% for member in members %}
+                            <div class="col d-flex align-items-center author-item">
+                                <div class="flex-shrink-0">
+                                    <img src="{{ member.image.url }}" alt="..." class="author-img rounded">
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <span class="author-name">{{ member.name }}</span>
+                                    {% if member.role %}
+                                        <span class="author-post">{{ member.role }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {%  endfor %}
                     </div>
                 </div>
-            </div>
-            <div class="col">
                 <div class="new-post-wrapper">
                     <a href="" class="btn-new-post">
-                        <span class="btn-new-post-text">Написать<br/>статью</span>
+                        <span class="btn-new-post-text">Написть</span>
+                        <span class="btn-new-post-text">статью</span>
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-{% endblock %}
+    </section>
+    <footer class="container-xl footer-info pb-4">
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <div class="navbar-nav">
+                    <a class="nav-link blue" href="#">Школа 1506</a>
+                    <a class="nav-link blue" href="#">О проекте</a>
+                    <a class="nav-link blue" href="#">Контакты</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <div class="navbar-nav small me-auto">
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Артём Зинкин</strong><br>
+                        <span>Руководитель проекта</span>
+                    </a>
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Арсений Кофанов</strong><br>
+                        <span>Разработчик</span>
+                    </a>
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Артемий Скороходов</strong><br>
+                        <span>Главный редактор</span>
+                    </a>
+                </div>
+                <a class="navbar-brand d-flex align-items-center me-5 order-sm-first mt-4 mt-sm-0" href="#">
+                    <span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2658/2658057.png" width="40">
+                    </span>
+                    <small class="ms-2 lh-sm">
+                        Проект Официальное<br>
+                        медиа школы 1506
+                    </small>
+                </a>
+            </div>
+        </nav>
+    </footer>
+</body>
+</html>

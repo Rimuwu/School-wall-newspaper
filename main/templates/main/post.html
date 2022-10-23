@@ -1,9 +1,97 @@
-{% extends 'main/base.html' %}
+{% load static %}
 
-{% block title %}
+<!DOCTYPE html>
+<html lang="ru-RU">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static "css/post.css" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+</head>
+<body>
+    <div class="hero"
+    style="--hero-bg-left: {{ release.bg_left_color }}; --hero-bg-right: {{ release.bg_right_color }}; --hero-title-left: {{ release.title_left_color }}; --hero-title-right:{{ release.title_right_color }};">
+        <nav class="navbar py-3">
+            <div class="container-xl">
+                <a class="d-flex align-items-center" href="{% url 'main' %}">
+                    <img src="{% static "images/logo.png" %}" width="35">
+                    <small class="ms-3 lh-1">
+                        Официальное медиа<br>
+                        школы 1506
+                    </small>
+                </a>
+                <a class="btn btn-sm btn-outline-dark ms-auto" href="">Все выпуски</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container-lg post-bg ">
+        <div class="">
+            <img src="{{ post.image.url }}" alt="..." class="img-fluid rounded">
+            <h3 class="display-5 mb-3 fw-light "># {{ post.title }}</h3>
+            <div class="post-content"> 
 
-{% endblock %}
+                {% autoescape off %}{{ post.content }}{% endautoescape %}
 
-{% block content %}
+                <!-- <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+                </span>
 
-{% endblock %}
+                <img src="https://via.placeholder.com/1920x1080">
+
+                <span>
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+    
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
+                </span> -->
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="container-xl footer-info pb-4">
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <div class="navbar-nav">
+                    <a class="nav-link blue" href="#">Школа 1506</a>
+                    <a class="nav-link blue" href="#">О проекте</a>
+                    <a class="nav-link blue" href="#">Контакты</a>
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <div class="navbar-nav small me-auto">
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Артём Зинкин</strong><br>
+                        <span>Руководитель проекта</span>
+                    </a>
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Арсений Кофанов</strong><br>
+                        <span>Разработчик</span>
+                    </a>
+                    <a class="nav-link lh-sm me-3" href="#">
+                        <strong>Артемий Скороходов</strong><br>
+                        <span>Главный редактор</span>
+                    </a>
+                </div>
+                <a class="navbar-brand d-flex align-items-center me-5 order-sm-first mt-4 mt-sm-0" href="#">
+                    <span>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2658/2658057.png" width="40">
+                    </span>
+                    <small class="ms-2 lh-sm">
+                        Проект Официальное<br>
+                        медиа школы 1506
+                    </small>
+                </a>
+            </div>
+        </nav>
+    </footer>
+</body>
+</html>
