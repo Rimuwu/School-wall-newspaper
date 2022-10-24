@@ -103,3 +103,11 @@ def show_post(request, post_id):
             }
     )
 
+def releases(request):
+    releases = Release.objects.filter(visibility = 1).order_by('position')
+
+    return render( request, 'main/releases.html',
+            { "releases": releases,
+            }
+    )
+
