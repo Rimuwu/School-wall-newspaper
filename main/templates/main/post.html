@@ -1,4 +1,5 @@
 {% load static %}
+{% load editorjs %}
 
 <!DOCTYPE html>
 <html lang="ru-RU">
@@ -30,9 +31,9 @@
         <div class="">
             <img src="{{ post.image.url }}" alt="..." class="img-fluid rounded">
             <h3 class="display-5 mb-3 fw-light "># {{ post.title }}</h3>
-            <div class="post-content"> 
+            <div class="post-content">
 
-                {% autoescape off %}{{ post.content }}{% endautoescape %}
+                {{ post.content | editorjs }}
 
                 <!-- <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
                 </span>
@@ -41,13 +42,13 @@
 
                 <span>
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
-    
+
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
-    
+
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
-    
+
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
-    
+
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eum eveniet consequatur expedita vel accusantium consectetur amet, quisquam, saepe libero aperiam facilis maxime asperiores nam similique sunt! Porro dolor amet totam.<br>
                 </span> -->
             </div>

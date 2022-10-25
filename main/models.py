@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 from colorfield.fields import ColorField
 from django.urls import reverse
+from django_editorjs_fields import EditorJsJSONField  # Django >= 3.1
+from django_editorjs_fields import EditorJsTextField
 
 class User(models.Model):
     name = models.CharField('Имя', max_length = 50)
@@ -20,20 +22,27 @@ class Post(models.Model):
     title = models.TextField('Название', max_length = 50)
     image = models.ImageField('Изображение', null = False, blank = False, upload_to="posts/")
     short_description = models.TextField('Краткое описание', null = True, blank = True)
-    content = models.TextField('Контент страницы', blank = True, null = True, default = 'Контент')
+    content = EditorJsJSONField(blank = True, null = True, default = 'Контент')
+    #models.TextField('Контент страницы', blank = True, null = True, default = 'Контент')
 
     position = models.PositiveIntegerField( default = 0, blank = False, null = False)
-    
+
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('post', kwargs = {'post_id': self.pk} )
-    
+
     class Meta:
         ordering = ['position']
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
+
+class Test(models.Model):
+    body_default = models.TextField()
+    body_editorjs = EditorJsJSONField()  # Django >= 3.1
+    body_editorjs_text = EditorJsTextField()
+
 
 
 class Release(models.Model):
@@ -46,20 +55,20 @@ class Release(models.Model):
     number = models.IntegerField('Номер выпуска', default = 0)
     title = models.CharField('Название выпуска', max_length = 50)
     description = models.TextField('Описание выпуска')
-    
+
     visibility = models.IntegerField("Видимость", choices = visibility_choice, default = False)
 
-    bg_left_color = ColorField("Задний фон (Начало)", 
+    bg_left_color = ColorField("Задний фон (Начало)",
     default = '#ffc70080', format = "hexa")
-    bg_right_color = ColorField("Задний фон (Конец)", 
+    bg_right_color = ColorField("Задний фон (Конец)",
     default = '#ff7a0080', format = "hexa")
 
-    title_left_color = ColorField("Цвет заголовка (Начало)", 
+    title_left_color = ColorField("Цвет заголовка (Начало)",
     default = '#ff4d4d', format = "hexa")
-    title_right_color = ColorField("Цвет заголовка (Конец)", 
+    title_right_color = ColorField("Цвет заголовка (Конец)",
     default = '#ff7a0080', format = "hexa")
 
-    editor = models.ForeignKey(User, 
+    editor = models.ForeignKey(User,
         verbose_name = 'Главный редактор',
         on_delete = models.PROTECT,
         related_name = 'editor',
