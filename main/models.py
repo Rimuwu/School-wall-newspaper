@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from colorfield.fields import ColorField
 from django.urls import reverse
-from django_editorjs_fields import EditorJsJSONField  # Django >= 3.1
+from django_editorjs_fields import EditorJsJSONField
 from django_editorjs_fields import EditorJsTextField
 
 class User(models.Model):
@@ -19,13 +19,15 @@ class User(models.Model):
         verbose_name_plural = 'Участники'
 
 class Post(models.Model):
-    title = models.TextField('Название', max_length = 50)
+    title = models.CharField('Название', max_length = 50)
     image = models.ImageField('Изображение', null = False, blank = False, upload_to="posts/")
     short_description = models.TextField('Краткое описание', null = True, blank = True)
-    content = EditorJsJSONField(blank = True, null = True, default = 'Контент')
+    content = EditorJsJSONField(blank = True, null = True)
     #models.TextField('Контент страницы', blank = True, null = True, default = 'Контент')
 
     position = models.PositiveIntegerField( default = 0, blank = False, null = False)
+
+    position = models.ForeignKey('Release', on_delete = models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -37,13 +39,6 @@ class Post(models.Model):
         ordering = ['position']
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
-
-class Test(models.Model):
-    body_default = models.TextField()
-    body_editorjs = EditorJsJSONField()  # Django >= 3.1
-    body_editorjs_text = EditorJsTextField()
-
-
 
 class Release(models.Model):
 
@@ -96,3 +91,6 @@ class Release(models.Model):
         ordering = ['position']
         verbose_name = 'Выпуск'
         verbose_name_plural = 'Выпуски'
+
+
+# https://docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.TabularInline
