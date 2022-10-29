@@ -1,101 +1,44 @@
-from django.shortcuts import redirect, render
+from turtle import pos
+from django.shortcuts import render
 
-from .models import Post, Release
+from .models import Post, Release, LinkPosts, LinkUsers
 
 
-def index(request):
+def show_release(request, release_id = None):
+    release = None
+    posts = []
+    users = []
 
-    releases = Release.objects.filter(visibility = 1).order_by('position')
-    first_post = None
-    one_colum_posts, two_colum_posts = [], []
-    big_one_post, big_two_post = None, None
-
-    if len(releases) != 0:
-        fisrt_release = releases[0]
-        posts = fisrt_release.posts.all()
-
-        for n in range(0, 7):
-
-            try:
-                if n == 0:
-                    first_post = posts[n]
-                
-                elif n < 3:
-                    one_colum_posts.append( posts[n] )
-                
-                elif n == 3:
-                    big_one_post = posts[n]
-                
-                elif n < 6:
-                    two_colum_posts.append( posts[n] )
-                
-                else:
-                    big_two_post  = posts[n]
-            except: pass
+    if release_id != None:
+        releases = Release.objects.filter(id = release_id)
 
     else:
-        fisrt_release = None
-
-    return render( request, 'main/index.html',
-            { "release": fisrt_release,
-              "first_post": first_post,
-              'one_colum_posts': one_colum_posts,
-              'two_colum_posts': two_colum_posts,
-              'big_one_post': big_one_post,
-              'big_two_post': big_two_post,
-              'members': fisrt_release.members.all()
-            }
-    )
-
-
-def show_release(request, release_id):
-
-    releases = Release.objects.filter(id = release_id)
-    first_post = None
-    one_colum_posts, two_colum_posts = [], []
-    big_one_post, big_two_post = None, None
+        releases = Release.objects.filter(visibility = 1).order_by('position')
 
     if len(releases) != 0:
-        fisrt_release = releases[0]
-        posts = fisrt_release.posts.all()
+        release = releases[0]
+        posts_links = LinkPosts.objects.filter(release_link = release).order_by('position')
+        users = LinkUsers.objects.filter(release_link = release).order_by('position')
 
-        for n in range(0, 7):
+        for post in posts_links:
+            posts.append(post.post_link)
 
-            try:
-                if n == 0:
-                    first_post = posts[n]
-                
-                elif n < 3:
-                    one_colum_posts.append( posts[n] )
-                
-                elif n == 3:
-                    big_one_post = posts[n]
-                
-                elif n < 6:
-                    two_colum_posts.append( posts[n] )
-                
-                else:
-                    big_two_post  = posts[n]
-            except: pass
-
-    else:
-        fisrt_release = None
-
-    return render( request, 'main/index.html',
-            { "release": fisrt_release,
-              "first_post": first_post,
-              'one_colum_posts': one_colum_posts,
-              'two_colum_posts': two_colum_posts,
-              'big_one_post': big_one_post,
-              'big_two_post': big_two_post,
-              'members': fisrt_release.members.all()
+    return render( request, 'main/release.html',
+            { 'release': release,
+              'posts': posts,
+              'members': users
             }
     )
 
 
 def show_post(request, post_id):
     post = Post.objects.filter(id = post_id)[0]
-    release = Release.objects.filter(posts = post)[0]
+    link_set = LinkPosts.objects.filter(post_link = post)
+    
+    if len(link_set) > 0:
+        release = link_set[0].release_link
+    else:
+        release = None
 
     return render( request, 'main/post.html',
             { 'release': release,
@@ -103,7 +46,7 @@ def show_post(request, post_id):
             }
     )
 
-def releases(request):
+def show_releases(request):
     releases = Release.objects.filter(visibility = 1).order_by('position')
 
     return render( request, 'main/releases.html',
