@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ release.title }}</title>
-    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/release.css" %}">
     <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
 </head>
 <body>
@@ -52,33 +52,31 @@
                     </div>
                     <div class="card-body px-4">
                         <h2 class="h3">Слово главного редактора</h2>
-                        {% autoescape off %}{{ release.editor_words }}{% endautoescape %}
+                        {{ release.editor_words }}
                     </div>
                 </div>
             </main>
             {% endif %}
-            {% if first_post %}
+            {% for post in posts|slice:"1" %}
                 <article class="col-lg-7 post-bg">
                     <div class="card post-content">
-                        <img src="{{ first_post.image.url }}" alt="" class="img-fluid rounded">
+                        <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                         <div class="card-body">
                             <h2>
-                                <a href="{{ first_post.get_absolute_url }}" class="stretched-link">
-                                    {{first_post.title}}
+                                <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                    {{ post.title }}
                                 </a>
                             </h2>
-                            {% if first_post.short_description %}
-                                {{first_post.short_description}}
-                            {% endif %}
+                            {{ post.short_description }}
                         </div>
                     </div>
                 </article>
-            {% endif %}
+            {% endfor %}
         </div>
     </div>
     <section class="container-xl mb-5">
         <div class="row p-2">
-            {% for post in one_colum_posts %}
+            {% for post in posts|slice:"1:3" %}
                 <article class="card col-sm-6 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -90,16 +88,18 @@
                     </div>
                 </article>
             {% endfor %}
-            <article class="card col-sm-12 col-lg-4 h-100 post-bg">
-                <img src="{{ big_one_post.image.url }}" alt="" class="img-fluid rounded">
-                <div class="card-body">
-                    <h2 class="h5">
-                        <a href="{{ big_one_post.get_absolute_url }}" class="stretched-link">
-                            {{ big_one_post.title }}
-                        </a>
-                    </h2>
-                </div>
-            </article>
+            {% for post in posts|slice:"3:4" %}
+                <article class="card col-sm-12 col-lg-4 h-100 post-bg">
+                    <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
+                    <div class="card-body">
+                        <h2 class="h5">
+                            <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+                    </div>
+                </article>
+            {% endfor %}
         </div>
     </section>
     <section class="logo-padding">
@@ -125,7 +125,7 @@
     </section>
     <section class="container-xl mb-5">
         <div class="row p-2">
-            {% for post in two_colum_posts %}
+            {% for post in posts|slice:"4:6" %}
                 <article class="card col-sm-6 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -137,16 +137,18 @@
                     </div>
                 </article>
             {% endfor %}
-            <article class="card col-sm-12 col-lg-4 h-100 post-bg">
-                <img src="{{ big_two_post.image.url }}" alt="" class="img-fluid rounded">
-                <div class="card-body">
-                    <h2 class="h5">
-                        <a href="{{ big_two_post.get_absolute_url }}" class="stretched-link">
-                            {{ big_two_post.title }}
-                        </a>
-                    </h2>
-                </div>
-            </article>
+            {% for post in posts|slice:"6:7" %}
+                <article class="card col-sm-12 col-lg-4 h-100 post-bg">
+                    <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
+                    <div class="card-body">
+                        <h2 class="h5">
+                            <a href="{{ post.get_absolute_url }}" class="stretched-link">
+                                {{ post.title }}
+                            </a>
+                        </h2>
+                    </div>
+                </article>
+            {% endfor %}
         </div>
     </section>
     <section class="bg-dark py-5 position-relative authors-wrapper">
@@ -158,10 +160,10 @@
                         {% for member in members %}
                             <div class="col d-flex align-items-center author-item">
                                 <div class="flex-shrink-0">
-                                    <img src="{{ member.image.url }}" alt="..." class="author-img rounded">
+                                    <img src="{{ member.user_link.image.url }}" alt="..." class="author-img rounded">
                                 </div>
                                 <div class="flex-grow-1 ms-2">
-                                    <span class="author-name">{{ member.name }}</span>
+                                    <span class="author-name">{{ member.user_link.name }}</span>
                                     {% if member.role %}
                                         <span class="author-post">{{ member.role }}</span>
                                     {% endif %}
@@ -193,7 +195,7 @@
             <div class="container-fluid">
                 <div class="navbar-nav small me-auto">
                     <a class="nav-link lh-sm me-3" href="#">
-                        <strong>Артём Зинкин</strong><br>
+                        <strong>Жеребцов главный </strong><br>
                         <span>Руководитель проекта</span>
                     </a>
                     <a class="nav-link lh-sm me-3" href="#">
