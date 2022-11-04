@@ -106,6 +106,3 @@ class Release(models.Model):
         ordering = ['position']
         verbose_name = 'Выпуск'
         verbose_name_plural = 'Выпуски'
-
-
-# https://docs.djangoproject.com/en/4.1/ref/contrib/admin/#django.contrib.admin.TabularInline
