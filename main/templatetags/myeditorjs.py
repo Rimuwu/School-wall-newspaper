@@ -29,25 +29,20 @@ def generate_image(data):
     classes = []
 
     if data.get('stretched'):
-        classes.append('stretched') # не используется
-        
+        classes.append('stretched') # not used
     if data.get('withBorder'):
         classes.append('withBorder')
-
     if data.get('withBackground'):
         classes.append('withBackground')
-
     if 'withBackground' not in classes:
         classes.append('fullimage')
 
     classes = ' '.join(classes)
-
     return f'<a href="{url}"><img src="{url}" alt="{caption}" class="post-img {classes}"/></a>'
 
 
-
 def generate_delimiter():
-    return ' <hr class="solid">'
+    return '<hr class="solid">'
 
 
 def generate_table(data):
