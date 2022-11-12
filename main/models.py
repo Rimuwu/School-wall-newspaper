@@ -3,8 +3,9 @@ from django.db import models
 from django.urls import reverse
 from django_editorjs_fields import EditorJsJSONField
 
+
 class User(models.Model):
-    name = models.CharField('Имя', max_length = 50)
+    name = models.CharField('Имя', max_length=50)
     image = models.ImageField('Изображение', upload_to="users/")
 
     def __str__(self):
@@ -15,12 +16,10 @@ class User(models.Model):
         verbose_name_plural = 'Участники'
 
 class LinkUsers(models.Model):
-    release_link = models.ForeignKey('Release', on_delete = models.CASCADE)
-
-    user_link = models.ForeignKey(User, verbose_name = 'Участник', on_delete = models.CASCADE)
-    role = models.CharField('Роль', max_length = 30, null = True, blank = True)
-
-    position = position = models.PositiveIntegerField(default = 0 ,blank = False, null = False )
+    release_link = models.ForeignKey('Release', on_delete=models.CASCADE)
+    user_link = models.ForeignKey(User, verbose_name='Участник', on_delete=models.CASCADE)
+    role = models.CharField('Роль', max_length=30, null=True, blank=True)
+    position = position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
         return self.user_link.name
@@ -32,24 +31,25 @@ class LinkUsers(models.Model):
 
 class Post(models.Model):
     title = models.CharField('Название', max_length = 50)
-    image = models.ImageField('Изображение', null = False, blank = False, upload_to="posts/")
-    short_description = models.TextField('Краткое описание', null = True, blank = True)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    image = models.ImageField('Изображение', null=False, blank=False, upload_to="posts/")
+    short_description = models.TextField('Краткое описание', null=True, blank=True)
     content = EditorJsJSONField()
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post', kwargs = {'post_id': self.pk} )
+        return reverse('post', kwargs = {'slug': self.slug})
 
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
 class LinkPosts(models.Model):
-    release_link = models.ForeignKey('Release', on_delete = models.CASCADE)
-    post_link = models.ForeignKey(Post, on_delete = models.CASCADE, verbose_name = 'Пост')
-    position = position = models.PositiveIntegerField(default = 0 ,blank = False, null = False )
+    release_link = models.ForeignKey('Release', on_delete=models.CASCADE)
+    post_link = models.OneToOneField(Post, on_delete=models.CASCADE, verbose_name='Пост')
+    position = position = models.PositiveIntegerField(default=0, blank=False, null=False )
 
     def __str__(self):
         return self.post_link.title
@@ -66,41 +66,62 @@ class Release(models.Model):
         (0, 'Скрыт')
     ]
 
-    number = models.IntegerField('Номер выпуска', default = 0)
-    title = models.CharField('Название выпуска', max_length = 50)
+    number = models.IntegerField('Номер выпуска', default=0)
+    title = models.CharField('Название выпуска', max_length=50)
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     description = models.TextField('Описание выпуска')
 
-    visibility = models.IntegerField("Видимость", choices = visibility_choice, default = False)
+    visibility = models.IntegerField("Видимость", choices=visibility_choice, default=False)
 
     bg_left_color = ColorField("Задний фон (Начало)",
-    default = '#ffc70080', format = "hexa")
+    default='#ffc70080', format="hexa")
     bg_right_color = ColorField("Задний фон (Конец)",
-    default = '#ff7a0080', format = "hexa")
+    default='#ff7a0080', format="hexa")
 
     title_left_color = ColorField("Цвет заголовка (Начало)",
-    default = '#ff4d4d', format = "hexa")
+    default='#ff4d4d', format="hexa")
     title_right_color = ColorField("Цвет заголовка (Конец)",
-    default = '#ff7a0080', format = "hexa")
+    default='#ff7a0080', format="hexa")
 
     editor = models.ForeignKey(User,
-        verbose_name = 'Главный редактор',
-        on_delete = models.PROTECT,
-        related_name = 'editor',
+        verbose_name='Главный редактор',
+        on_delete=models.PROTECT,
+        related_name='editor',
     )
     editor_words = models.TextField('Слова редактора')
-    position = models.PositiveIntegerField( default = 0, blank = False, null = False)
+    position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
-
-        if self.position == 1:
-            posit = 'Главный'
-        else:
-            posit = self.position
-
-        return f'({posit}) {self.title}'
+        return self.title
 
     def get_absolute_url(self):
-        return reverse('release', kwargs = {'release_id': self.pk} )
+        return reverse('release', kwargs={'slug': self.slug})
+    
+    def get_release_members(self):
+        members = LinkUsers.objects.filter(release_link = self).order_by('position')
+        return members
+    
+    def get_release_posts(self):
+        posts = []
+        posts_links = LinkPosts.objects.filter(release_link = self).order_by('position')
+
+        for post in posts_links:
+            posts.append(post.post_link)
+
+        return posts
+    
+    def get_pagination(self):
+        button_list = []
+
+        class PaginationButon:
+            
+            def __init__(self, url, position, disabled):
+                self.url = url
+                self.position = position
+                self.disabled = disabled
+        
+        button = PaginationButon('', 0, False)
+        return button
 
     class Meta:
         ordering = ['position']
