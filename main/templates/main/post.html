@@ -27,23 +27,75 @@
             </div>
         </nav>
     </div>
-    <div class="container-lg post-bg ">
-        <div class="">
-            <img src="{{ post.image.url }}" alt="..." class="img-fluid rounded">
-            <h3 class="display-5 mb-3 fw-light "># {{ post.title }}</h3>
-            <div class="post-content">
-                {{ post.content | editorjs }}
-            </div>
+    <div class="container-xl mb-4">
+        <div class="row p-1 justify-content-center">
+            <main class="col order-lg-last pt-3 justify-content-center">
+                <div class="card justify-content-center">
+                    <div class="px-4">
+                        <img src="{{ post.image.url }}" alt="..." class="rounded img-fluid">
+                    </div>
+                    <div class="card-body px-4">
+                        {{ post.short_description }}
+                    </div>
+                </div>
+            </main>
+            <article class="col-lg-7 post-bg">
+                <div class="card post-content">
+                    <div class="post-content"> 
+                        {{ post.content | editorjs }}
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
-
-
+    <nav>
+        {{ release.get_pagination.position }}
+        <ul class="pagination justify-content-center pagination-lg mb-5">
+          <li class="page-item disabled">
+            <a class="page-link" href="#" tabindex="-1"><</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">></a></li>
+        </ul>
+    </nav>
+    <section class="bg-dark py-5 position-relative authors-wrapper">
+        <div class="container-xl">
+            <h3 class="display-3 text-white mb-5 fw-light">Над выпуском работали</h3>
+            <div class="row wrapper-min">
+                <div class="col-md-6 ">
+                    <div class="row">
+                        {% for member in release.get_release_members %}
+                            <div class="col d-flex align-items-center author-item">
+                                <div class="flex-shrink-0">
+                                    <img src="{{ member.user_link.image.url }}" alt="..." class="author-img rounded">
+                                </div>
+                                <div class="flex-grow-1 ms-2">
+                                    <span class="author-name">{{ member.user_link.name }}</span>
+                                    {% if member.role %}
+                                        <span class="author-post">{{ member.role }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="new-post-wrapper">
+                    <a href="" class="btn-new-post">
+                        <span class="btn-new-post-text">Написть</span>
+                        <span class="btn-new-post-text">статью</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="container-xl footer-info pb-4">
         <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
                 <div class="navbar-nav">
-                    <a class="nav-link blue" href="#">Школа 1506</a>
-                    <a class="nav-link blue" href="#">О проекте</a>
+                    <a class="nav-link blue" href="https://gym1506.mskobr.ru/" >Школа 1506</a>
+                    <a class="nav-link blue" href="https://github.com/Rimuwu/School-wall-newspaper">О проекте</a>
                     <a class="nav-link blue" href="#">Контакты</a>
                 </div>
             </div>
@@ -78,3 +130,5 @@
     </footer>
 </body>
 </html>
+
+

@@ -57,7 +57,7 @@
                 </div>
             </main>
             {% endif %}
-            {% for post in posts|slice:"1" %}
+            {% for post in release.get_release_posts|slice:"1" %}
                 <article class="col-lg-7 post-bg">
                     <div class="card post-content">
                         <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
@@ -76,7 +76,7 @@
     </div>
     <section class="container-xl mb-5">
         <div class="row p-2">
-            {% for post in posts|slice:"1:3" %}
+            {% for post in release.get_release_posts|slice:"1:3" %}
                 <article class="card col-sm-6 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -88,7 +88,7 @@
                     </div>
                 </article>
             {% endfor %}
-            {% for post in posts|slice:"3:4" %}
+            {% for post in release.get_release_posts|slice:"3:4" %}
                 <article class="card col-sm-12 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -107,14 +107,14 @@
           <div class="container-xl">
               <div class="row">
                   <div class="col">
-                      <a href="https://t.me/wallnewspaper1506" class="text-white d-flex flex-column py-5">
+                      <a href="https://t.me/schoolpostru" class="text-white d-flex flex-column py-5">
                           <span class="display-4">Подписаться</span>
                           <span class="fs-4">Чтобы первым узнать о новом выпуске</span>
                       </a>
                   </div>
                   <div class="col">
                     <div class="d-flex logo">
-                      <a href="https://t.me/wallnewspaper1506">
+                      <a href="https://t.me/schoolpostru">
                         <img src="{% static "images/icon_telegram.svg" %}" alt='...' class="logo-img">
                       </a>
                     </div>
@@ -125,7 +125,7 @@
     </section>
     <section class="container-xl mb-5">
         <div class="row p-2">
-            {% for post in posts|slice:"4:6" %}
+            {% for post in release.get_release_posts|slice:"4:6" %}
                 <article class="card col-sm-6 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -137,7 +137,7 @@
                     </div>
                 </article>
             {% endfor %}
-            {% for post in posts|slice:"6:7" %}
+            {% for post in release.get_release_posts|slice:"6:7" %}
                 <article class="card col-sm-12 col-lg-4 h-100 post-bg">
                     <img src="{{ post.image.url }}" alt="" class="img-fluid rounded">
                     <div class="card-body">
@@ -157,7 +157,7 @@
             <div class="row wrapper-min">
                 <div class="col-md-6">
                     <div class="row">
-                        {% for member in members %}
+                        {% for member in release.get_release_members %}
                             <div class="col d-flex align-items-center author-item">
                                 <div class="flex-shrink-0">
                                     <img src="{{ member.user_link.image.url }}" alt="..." class="author-img rounded">
@@ -169,7 +169,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                        {%  endfor %}
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="new-post-wrapper">
@@ -185,20 +185,22 @@
         <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
                 <div class="navbar-nav">
-                    <a class="nav-link blue" href="#">Школа 1506</a>
-                    <a class="nav-link blue" href="#">О проекте</a>
-                    <a class="nav-link blue" href="#">Контакты</a>
+                    <div class="navbar-nav">
+                        <a class="nav-link blue" href="https://gym1506.mskobr.ru/">Школа 1506</a>
+                        <a class="nav-link blue" href="https://github.com/Rimuwu/School-wall-newspaper">О проекте</a>
+                        <a class="nav-link blue" href="#">Контакты</a>
+                    </div>
                 </div>
             </div>
         </nav>
         <nav class="navbar navbar-expand-md">
             <div class="container-fluid">
                 <div class="navbar-nav small me-auto">
-                    <a class="nav-link lh-sm me-3" href="#">
-                        <strong>Жеребцов главный </strong><br>
+                    <a class="nav-link lh-sm me-3" href="https://zinkin.ru/">
+                        <strong>Артём Зинкин</strong><br>
                         <span>Руководитель проекта</span>
                     </a>
-                    <a class="nav-link lh-sm me-3" href="#">
+                    <a class="nav-link lh-sm me-3" href="https://github.com/Rimuwu">
                         <strong>Арсений Кофанов</strong><br>
                         <span>Разработчик</span>
                     </a>
