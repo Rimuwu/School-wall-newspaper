@@ -21,10 +21,12 @@ def show_post(request, slug):
     
     if len(link_set) > 0:
         release = link_set[0].release_link
+        buttons = release.get_pagination(slug)
 
     return render( request, 'main/post.html',
             { 'release': release,
               'post': post,
+              'buttons': buttons
             }
     )
 
