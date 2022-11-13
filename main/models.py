@@ -49,7 +49,7 @@ class Post(models.Model):
 class LinkPosts(models.Model):
     release_link = models.ForeignKey('Release', on_delete=models.CASCADE)
     post_link = models.OneToOneField(Post, on_delete=models.CASCADE, verbose_name='Пост')
-    position = position = models.PositiveIntegerField(default=0, blank=False, null=False )
+    position = models.PositiveIntegerField(default=0, blank=False, null=False )
 
     def __str__(self):
         return self.post_link.title
@@ -98,30 +98,67 @@ class Release(models.Model):
         return reverse('release', kwargs={'slug': self.slug})
     
     def get_release_members(self):
-        members = LinkUsers.objects.filter(release_link = self).order_by('position')
+        members = LinkUsers.objects.filter(release_link=self).order_by('position')
         return members
     
     def get_release_posts(self):
         posts = []
-        posts_links = LinkPosts.objects.filter(release_link = self).order_by('position')
+        posts_links = LinkPosts.objects.filter(release_link=self).order_by('position')
 
         for post in posts_links:
             posts.append(post.post_link)
 
         return posts
     
-    def get_pagination(self):
-        button_list = []
+    def get_pagination(self, slug):
 
         class PaginationButon:
             
-            def __init__(self, url, position, disabled):
-                self.url = url
-                self.position = position
-                self.disabled = disabled
+            def __init__(self, post):
+                self.slug = post.slug
+                self.position = post.position
+                self.disabled = post.disabled
+                self.url = post.get_absolute_url()
+
+        button_list = []
+        slug_list = []
+        posts_by_slug = {}
+        now_ind = 0
+        posts_links = LinkPosts.objects.filter(release_link=self).order_by('position')
+
+        for post_l in posts_links:
+            post = post_l.post_link
+            post.position = post_l.position
+
+            if slug == post.slug:
+                post.disabled = False
+            else:
+                post.disabled = True
+
+            posts_by_slug[post.slug] = PaginationButon(post)
+            slug_list.append(post.slug)
         
-        button = PaginationButon('', 0, False)
-        return button
+        now_ind = slug_list.index(slug)
+        if now_ind == 0:
+            for i in range(now_ind, now_ind + 3):
+                button_list.append(posts_by_slug[slug_list[i]])
+
+        elif now_ind == 6:
+            for i in range(now_ind - 2, now_ind + 1):
+                button_list.append(posts_by_slug[slug_list[i]])
+        
+        else:
+            for i in range(now_ind - 1, now_ind + 2):
+                button_list.append(posts_by_slug[slug_list[i]])
+
+        button_list.insert(0, posts_by_slug[slug_list[now_ind - 1]])
+        
+        if now_ind == len(slug_list)-1:
+            button_list.insert(len(slug_list) + 1, posts_by_slug[slug_list[0]])
+        else:
+            button_list.insert(len(slug_list) + 1, posts_by_slug[slug_list[now_ind + 1]])
+        
+        return button_list
 
     class Meta:
         ordering = ['position']
