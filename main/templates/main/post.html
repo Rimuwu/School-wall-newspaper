@@ -32,7 +32,9 @@
             <main class="col order-lg-last pt-3 justify-content-center">
                 <div class="card justify-content-center">
                     <div class="px-4">
-                        <img src="{{ post.image.url }}" alt="..." class="rounded img-fluid">
+                        {% if post.image %}
+                            <img src="{{ post.image.url }}" alt="..." class="rounded img-fluid">
+                        {% endif %}
                     </div>
                     <div class="card-body px-4">
                         {{ post.short_description }}
@@ -52,19 +54,10 @@
         <nav>
             <ul class="pagination justify-content-center pagination-lg mb-5">
                 {% for button in buttons|slice:"0:1" %}
-                    <li class="page-item"><a class="page-link" href="{{ button.url }}"><</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ button.url }}">< {{ button.title }}</a></li>
                 {% endfor %}
-                {% for button in buttons|slice:"1:4" %}
-                    {% if button.disabled %}
-                        <li class="page-item"><a class="page-link" href="{{ button.url }}">{{ button.position }}</a></li>
-                    {% else %}
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">{{ button.position }}</a>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-                {% for button in buttons|slice:"4:5" %}
-                    <li class="page-item"><a class="page-link" href="{{ button.url }}">></a></li>
+                {% for button in buttons|slice:"1:2" %}
+                    <li class="page-item float-left"><a class="page-link" href="{{ button.url }}">{{ button.title }} ></a></li>
                 {% endfor %}
             </ul>
         </nav>
