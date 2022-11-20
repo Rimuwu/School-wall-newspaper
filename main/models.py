@@ -15,11 +15,12 @@ class User(models.Model):
         verbose_name = 'Участник'
         verbose_name_plural = 'Участники'
 
+
 class LinkUsers(models.Model):
     release_link = models.ForeignKey('Release', on_delete=models.CASCADE)
     user_link = models.ForeignKey(User, verbose_name='Участник', on_delete=models.CASCADE)
     role = models.CharField('Роль', max_length=30, null=True, blank=True)
-    position = position = models.PositiveIntegerField(default=0, blank=False, null=False)
+    position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
         return self.user_link.name
@@ -29,66 +30,82 @@ class LinkUsers(models.Model):
         verbose_name = 'Участник'
         verbose_name_plural = 'Участники'
 
+
 class Post(models.Model):
-    title = models.CharField('Название', max_length = 50)
+    visibility_choice = [
+        (1, 'Пост виден'),
+        (0, 'Пост скрыт')
+    ]
+
+    title = models.CharField('Название', max_length=50)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    image = models.ImageField('Изображение', null=False, blank=False, upload_to="posts/")
+    visibility = models.IntegerField("Видимость", choices=visibility_choice, default=False)
+    image = models.ImageField('Изображение', null=True, blank=True, upload_to="posts/")
     short_description = models.TextField('Краткое описание', null=True, blank=True)
-    content = EditorJsJSONField()
+    content = EditorJsJSONField(default = dict, null=True, blank=True)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post', kwargs = {'slug': self.slug})
+        return reverse('post', kwargs={'slug': self.slug})
 
     class Meta:
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
+
 class LinkPosts(models.Model):
     release_link = models.ForeignKey('Release', on_delete=models.CASCADE)
     post_link = models.OneToOneField(Post, on_delete=models.CASCADE, verbose_name='Пост')
-    position = models.PositiveIntegerField(default=0, blank=False, null=False )
+    position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
         return self.post_link.title
 
     class Meta:
-        ordering = ['position']
+        ordering = ['-position']
         verbose_name = 'Пост'
         verbose_name_plural = 'Посты'
 
-class Release(models.Model):
 
+class PaginationButton:
+
+    def __init__(self, post):
+        self.title = post.title
+        self.url = post.get_absolute_url()
+
+
+class Release(models.Model):
     visibility_choice = [
-        (1, 'Видим'),
-        (0, 'Скрыт')
+        (1, 'Релиз видим'),
+        (0, 'Релиз скрыт')
     ]
 
-    number = models.IntegerField('Номер выпуска', default=0)
-    title = models.CharField('Название выпуска', max_length=50)
+    number = models.IntegerField('Номер выпуска', default=1, null=True, blank=True, unique=True)
+    title = models.CharField('Название выпуска', max_length=50, unique=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    description = models.TextField('Описание выпуска')
+    description = models.TextField('Описание выпуска', null=True, blank=True)
 
     visibility = models.IntegerField("Видимость", choices=visibility_choice, default=False)
 
     bg_left_color = ColorField("Задний фон (Начало)",
-    default='#ffc70080', format="hexa")
+                               default='#ffc70080', format="hexa", null=True, blank=True)
     bg_right_color = ColorField("Задний фон (Конец)",
-    default='#ff7a0080', format="hexa")
+                                default='#ff7a0080', format="hexa", null=True, blank=True)
 
     title_left_color = ColorField("Цвет заголовка (Начало)",
-    default='#ff4d4d', format="hexa")
+                                  default='#ff4d4d', format="hexa", null=True, blank=True)
     title_right_color = ColorField("Цвет заголовка (Конец)",
-    default='#ff7a0080', format="hexa")
+                                   default='#ff7a0080', format="hexa", null=True, blank=True)
 
     editor = models.ForeignKey(User,
-        verbose_name='Главный редактор',
-        on_delete=models.PROTECT,
-        related_name='editor',
-    )
-    editor_words = models.TextField('Слова редактора')
+                               verbose_name='Главный редактор',
+                               on_delete=models.PROTECT,
+                               related_name='editor', 
+                               null=True, blank=True
+                               )
+    editor_words = models.TextField('Слова редактора', null=True, blank=True)
     position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
@@ -96,11 +113,11 @@ class Release(models.Model):
 
     def get_absolute_url(self):
         return reverse('release', kwargs={'slug': self.slug})
-    
+
     def get_release_members(self):
         members = LinkUsers.objects.filter(release_link=self).order_by('position')
         return members
-    
+
     def get_release_posts(self):
         posts = []
         posts_links = LinkPosts.objects.filter(release_link=self).order_by('position')
@@ -109,58 +126,34 @@ class Release(models.Model):
             posts.append(post.post_link)
 
         return posts
-    
-    def get_pagination(self, slug):
 
-        class PaginationButon:
-            
-            def __init__(self, post):
-                self.slug = post.slug
-                self.position = post.position
-                self.disabled = post.disabled
-                self.url = post.get_absolute_url()
+    def get_pagination(self, slug):
 
         button_list = []
         slug_list = []
         posts_by_slug = {}
-        now_ind = 0
         posts_links = LinkPosts.objects.filter(release_link=self).order_by('position')
 
         for post_l in posts_links:
             post = post_l.post_link
-            post.position = post_l.position
 
-            if slug == post.slug:
-                post.disabled = False
-            else:
-                post.disabled = True
-
-            posts_by_slug[post.slug] = PaginationButon(post)
+            posts_by_slug[post.slug] = PaginationButton(post)
             slug_list.append(post.slug)
         
         now_ind = slug_list.index(slug)
-        if now_ind == 0:
-            for i in range(now_ind, now_ind + 3):
-                button_list.append(posts_by_slug[slug_list[i]])
 
-        elif now_ind == 6:
-            for i in range(now_ind - 2, now_ind + 1):
-                button_list.append(posts_by_slug[slug_list[i]])
-        
-        else:
-            for i in range(now_ind - 1, now_ind + 2):
-                button_list.append(posts_by_slug[slug_list[i]])
+        previous_post = posts_by_slug[slug_list[now_ind - 1]]
+        button_list.append(previous_post)
 
-        button_list.insert(0, posts_by_slug[slug_list[now_ind - 1]])
-        
-        if now_ind == len(slug_list)-1:
-            button_list.insert(len(slug_list) + 1, posts_by_slug[slug_list[0]])
+        if len(slug_list) != now_ind + 1:
+            subsequent_post = posts_by_slug[slug_list[now_ind + 1]]
         else:
-            button_list.insert(len(slug_list) + 1, posts_by_slug[slug_list[now_ind + 1]])
+            subsequent_post = posts_by_slug[slug_list[0]]
         
+        button_list.append(subsequent_post)
         return button_list
 
     class Meta:
-        ordering = ['position']
+        ordering = ['-position']
         verbose_name = 'Выпуск'
         verbose_name_plural = 'Выпуски'
