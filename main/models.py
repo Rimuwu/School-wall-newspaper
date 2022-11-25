@@ -39,9 +39,8 @@ class Post(models.Model):
 
     title = models.CharField('Название', max_length=50)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    visibility = models.IntegerField("Видимость", choices=visibility_choice, default=False)
     image = models.ImageField('Изображение', null=True, blank=True, upload_to="posts/")
-    short_description = models.TextField('Краткое описание', null=True, blank=True)
+    short_description = models.TextField('Краткое описание', blank=True)
     content = EditorJsJSONField(default = dict, null=True, blank=True)
 
     def __str__(self):
@@ -85,7 +84,7 @@ class Release(models.Model):
     number = models.IntegerField('Номер выпуска', default=1, null=True, blank=True, unique=True)
     title = models.CharField('Название выпуска', max_length=50, unique=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
-    description = models.TextField('Описание выпуска', null=True, blank=True)
+    description = models.TextField('Описание выпуска', blank=True)
 
     visibility = models.IntegerField("Видимость", choices=visibility_choice, default=False)
 
@@ -105,7 +104,7 @@ class Release(models.Model):
                                related_name='editor', 
                                null=True, blank=True
                                )
-    editor_words = models.TextField('Слова редактора', null=True, blank=True)
+    editor_words = models.TextField('Слова редактора', blank=True)
     position = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
@@ -142,8 +141,9 @@ class Release(models.Model):
         
         now_ind = slug_list.index(slug)
 
-        previous_post = posts_by_slug[slug_list[now_ind - 1]]
-        button_list.append(previous_post)
+        if len(slug_list) != 0:
+            previous_post = posts_by_slug[slug_list[now_ind - 1]]
+            button_list.append(previous_post)
 
         if len(slug_list) != now_ind + 1:
             subsequent_post = posts_by_slug[slug_list[now_ind + 1]]
