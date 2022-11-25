@@ -12,7 +12,7 @@ def show_release(request, slug=None):
         releases = Release.objects.filter(visibility=1).order_by('position')
         release = releases[0]
     
-    if not (release.visibility and request.user.is_authenticated):
+    if not (release.visibility or request.user.is_authenticated):
         raise Http404()
     else:
         if slug != None and release.position == 1:
@@ -33,10 +33,7 @@ def show_post(request, slug):
     is_authenticated = request.user.is_authenticated
     exists_release = release != None
 
-    print(is_authenticated, exists_release)
-
     if exists_release and not (release.visibility or is_authenticated):
-        print('1')
         raise Http404()
     elif not (exists_release or is_authenticated):
         raise Http404()
