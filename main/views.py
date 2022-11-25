@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 
 from .models import LinkPosts, Post, Release
 
@@ -12,29 +12,40 @@ def show_release(request, slug=None):
         releases = Release.objects.filter(visibility=1).order_by('position')
         release = releases[0]
     
-    if release.visibility == False and request.user.is_authenticated == False:
+    if not (release.visibility and request.user.is_authenticated):
         raise Http404()
     else:
-        return render(request, 'main/release.html', {'release': release})
+        if slug != None and release.position == 1:
+            return redirect('/')
+        else:
+            return render(request, 'main/release.html', {'release': release})
 
 
 def show_post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     link_set = LinkPosts.objects.filter(post_link=post)
-    release = None
+    release, buttons = None, []
 
     if len(link_set) > 0:
         release = link_set[0].release_link
         buttons = release.get_pagination(slug)
-    
-    if post.visibility == False and request.user.is_authenticated == False:
+
+    is_authenticated = request.user.is_authenticated
+    exists_release = release != None
+
+    print(is_authenticated, exists_release)
+
+    if exists_release and not (release.visibility or is_authenticated):
+        print('1')
+        raise Http404()
+    elif not (exists_release or is_authenticated):
         raise Http404()
     else:
         return render(request, 'main/post.html',
-                    {'release': release,
-                     'post': post,
-                     'buttons': buttons
-                    })
+                     {'release': release,
+                      'post': post,
+                      'buttons': buttons
+                     })
 
 
 def show_releases(request):
