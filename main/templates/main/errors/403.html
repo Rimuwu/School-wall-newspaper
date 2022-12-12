@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru-RU" >
+<head>
+  <meta charset="UTF-8">
+  <title>403 Нет прав</title>
+  <link rel="stylesheet" href="{% static "css/error.css" %}">
+  <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+</head>
+  <body>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 align-items-center">
+            <img src="{% static "images/cat.png" %}" width="300px">
+          </div>
+          <div class="col-md-6 align-items-center">
+            <h1>403</h1>
+            <h2>О нет! Страница не доступна.</h2>
+            <p>Эта страница зашифрована кибер котиком! Перейдите на главную страницу или войдите в систему.
+            </p>
+            <a href="/"><button class="btn green">Главная страница</button></a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
