@@ -46,5 +46,29 @@ def show_post(request, slug):
 
 
 def show_releases(request):
-    releases = Release.objects.filter(visibility=1).order_by('position')
+
+    if request.user.is_authenticated:
+        releases = Release.objects.order_by('position')
+    else:
+        releases = Release.objects.filter(visibility=1).order_by('position')
+        
     return render(request, 'main/releases.html', {"releases": releases})
+
+def error_403(request, exception):
+
+    response = render(request, 'main/errors/403.html')
+    response.status_code = 403
+    return response
+
+def error_404(request, exception):
+
+    response = render(request, 'main/errors/404.html')
+    response.status_code = 404
+    return response
+
+def error_500(request):
+
+    response = render(request, 'main/errors/500.html')
+    response.status_code = 500
+    return response
+
